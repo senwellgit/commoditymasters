@@ -1,0 +1,83 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "animate.css";
+
+.list ul {
+    list-style-type: none;
+    color: white;
+}
+
+.title{
+    position: relative;
+    background-color: rgb(214, 163, 163);
+    margin: 10px;
+    width: 357px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+.bullets{
+    position: relative;
+    background-color: rgb(100, 77, 77);
+    margin: 5px;
+    width: 360px;
+    
+}
+.list{
+    height: 280px;
+    width: 416px;
+    overflow: hidden;
+}
+.paraPic img{
+ float: left;
+ padding-right: 10px;
+width: 200px;
+height: 140px;
+}
+
+
+// }
+// .paraPic h1{
+    
+//     animation-name: welcome;
+//     animation-duration: 4s;
+// }
+
+// @keyframes welcome {
+//     from {color: red;}
+//     to {color: yellow;}
+//   }
+
+
+  .typewriter h1 {
+      font-size: 2.5rem;
+      color: orange;
+    overflow: hidden; 
+    // border-right: .15em solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: 0;
+    animation: 
+      typing 1s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+.typewriter{
+    width: 590px;
+  
+    
+}
+
+.paraPic p{
+    width: 750px;
+    text-align: justify;
+}

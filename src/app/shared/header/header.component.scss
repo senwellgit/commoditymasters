@@ -1,0 +1,86 @@
+
+#navbarNav ul li{
+    //    display: inline;
+    //    padding: 8px;  
+       border-right: 1px solid rgb(112, 106, 133);
+    }
+
+    #navbarNav  ul li a{
+    
+        font-size: 16px;
+        color: #FFF;
+        text-shadow: 1px 1px 2px #025483;
+        display: block;
+        padding: 14px 25px;
+    }
+#navbarNav ul li:last-child{
+    border-right: 0px;
+}
+
+    #navbarNav ul li:hover a{
+    background-color: orange;
+}
+
+
+.navbar{
+    // background: url('https://www.costmasters.in/images/nav-bg.png') repeat-x!important;
+    height: 47px;
+    display: block;
+    width: 100%;
+
+}
+
+#navbarNav{
+    background-color: blue;
+    text-align: center;
+    justify-content: center;
+}
+.navbar-brand{
+    font-weight: bold;
+}
+#logo{
+    margin-left: 150px;
+   
+}
+.contact ul{
+    
+    list-style-type:none;
+    
+}
+
+.contact-nbr{
+    
+    background: #0095cd;
+    width: 190px;
+    padding: 8px 12px 3px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #FFF;
+    width: 257px;
+    position: relative;
+    
+    border-radius: 6px;
+    margin: -10px 0 0;
+    line-height: 28px;
+    letter-spacing: -1px;
+}
+.social{
+    margin-top: 20px;
+}
+.social img:last-child{
+    margin-left: 10px;
+}
+.social{
+    margin-left: 185px;
+}
+.contact-nbr img{
+    padding-right: 10px;
+}
+
+.logoText {
+    position: absolute;
+    left: 230px;
+    top: 80px;
+    font-style: italic;
+    
+}
