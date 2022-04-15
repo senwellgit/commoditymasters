@@ -1,0 +1,47 @@
+.container1{
+    background-color: #dee2e6;
+    margin-top: 10px;
+    padding: 30px;
+}
+
+.header{
+    // margin: 30px;
+    // padding: 20px;
+    background-color: white;
+    border: 2px solid;
+}
+// .heading{
+// // text-transform: uppercase;
+// // font-size: 16px;
+// // font-weight: 600;
+// }
+
+table {
+    width: 100%;
+  }
+  .newLetters{
+      overflow: auto;
+  }
+.newLetterCard{
+    background-color:#ffffff;
+    margin-top: 10px;
+    // margin-bottom: 5%;
+    box-shadow: 3px 3px 6px 3px grey;
+}
+.newletter{
+    width: 180px; 
+    height: 250px; 
+    border: 2px solid;
+}
+.tableHead{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-bottom: 2px solid;
+    text-transform: uppercase;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }

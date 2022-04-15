@@ -17,30 +17,48 @@
     border-right: 0px;
 }
 
-    #navbarNav ul li:hover a{
-    background-color: orange;
+    #navbarNav ul li:hover, div.dropdown-menu a:hover{
+    font-weight:500;
+    background: #ff865b;
 }
 
+.active{
+    background: #ff865b;
+}
 
 .navbar{
-    // background: url('https://www.costmasters.in/images/nav-bg.png') repeat-x!important;
-    height: 47px;
+    
+    height: auto;
     display: block;
     width: 100%;
+    padding: 0%;
+    margin-right: 0%;
+    
 
 }
-
+.navbar-toggler{
+margin-left: 27px;
+    margin-bottom: 20px;
+}
 #navbarNav{
-    background-color: blue;
+    background-color: #025b92;
     text-align: center;
     justify-content: center;
+    margin: 0%;
 }
 .navbar-brand{
     font-weight: bold;
 }
+
 #logo{
     margin-left: 150px;
    
+}
+#logocaption{
+    padding-left: 26%; 
+    margin-top: -1%;
+    font-weight:500;
+    font-style: italic;
 }
 .contact ul{
     
@@ -49,29 +67,28 @@
 }
 
 .contact-nbr{
-    
-    background: #0095cd;
+    font-weight: bold;
+    text-align: center;
     width: 190px;
-    padding: 8px 12px 3px;
+    padding:1%;
     font-size: 18px;
     font-weight: normal;
+    background-color:#025b92 ;
     color: #FFF;
     width: 257px;
     position: relative;
     
-    border-radius: 6px;
+    border-radius: 10px;
     margin: -10px 0 0;
     line-height: 28px;
     letter-spacing: -1px;
 }
 .social{
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 55%;
 }
 .social img:last-child{
     margin-left: 10px;
-}
-.social{
-    margin-left: 185px;
 }
 .contact-nbr img{
     padding-right: 10px;
@@ -83,4 +100,56 @@
     top: 80px;
     font-style: italic;
     
+}
+
+@media only screen and (max-width: 767px) {
+   .contact {
+      margin: 12%;
+      margin-left: 15%;
+    }
+    div.logo-bg  p{
+    padding-left: 25%;
+    margin-top: -2%;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: -1rem;
+    }
+    #logo{
+    padding-top: 2%;
+    height: 81px;
+    width: 300px;
+    margin-left:15px;
+    }
+    .social{
+        margin-top: 10px;
+        margin-left: 115%;
+        display: inline-flex;
+    }
+
+  }
+
+
+  @media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+@media only screen and (max-width:500px){
+#logo{
+    height: 57px;
+    width: 290px;
+    padding-top: 1%;
+    display: flex;
+    margin: auto;
+    margin-top: 3%;
+    }
+#logocaption{
+    font-size: 12px;
+    padding-left: 25%;
+    margin-top: -8%;
+    }
+    .header{
+        height: 150px;
+    }
 }

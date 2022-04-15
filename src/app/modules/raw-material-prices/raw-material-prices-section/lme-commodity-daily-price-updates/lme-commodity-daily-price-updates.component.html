@@ -1,0 +1,198 @@
+<!-- 
+<table>
+    <thead>
+            <th>2011</th>
+            <th>2012</th>
+            <th>2013</th>
+            <th>2014</th>
+            <th>2015</th>
+            <th>2016</th>
+            <th>2017</th>
+            <th>2018</th>
+            <th>2019</th>
+            <th>2020</th>
+            <th>2021</th>
+    </thead>
+    <tbody *ngFor="let data of year_2011">
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+            <td><a href="">{{data}}</a></td>
+    </tbody>
+</table> -->
+<!-- 
+<div class="">
+
+    <table class="table border tableData">
+        <thead>
+            <tr>
+                <th scope="col">2011</th>
+                <th scope="col">2012</th>
+                <th scope="col">2013</th>
+                <th scope="col">2014</th>
+                <th scope="col">2015</th>
+                <th scope="col">2016</th>
+                <th scope="col">2017</th>
+                <th scope="col">2018</th>
+                <th scope="col">2019</th>
+                <th scope="col">2020</th>
+                <th scope="col">2021</th>
+                 <th scope="col">Download</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of yEAR2011">
+                <td>
+                    <button type="button" class=" btn btn-primary btn-sm w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class=" btn btn-primary btn-sm w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm  w-100"
+                        (click)="openDoc(item.path, item.startPage)">{{ item.name }}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-sm-3">
+        <div class="commodityList">
+            <label for="">Commodity Head</label>
+            <div class="mt-1 form-group">
+                <select class="form-select" name="" id="" aria-expanded="false">
+                    <!-- <option *ngFor="let data of commodityData" value="">{{data.nonFerrous_Metals}}</option> -->
+                    <option value="">Select</option>
+                    <option value="">Non-Ferrous Metals</option>
+                    <option value="">Ferrous Metals</option>
+                    <option value="">Plastics</option>
+                    <option value="">Ferrous Alloys</option>
+                    <option value="">Rubber</option>
+                </select>
+            </div>
+            <label for="">Commodity</label>
+            <div class="mt-1 form-group">
+                <select class="form-select" name="" id="" aria-expanded="false">
+                    <option value="">Select</option>
+                    <option value="">Non-Ferrous Metals</option>
+                    <option value="">Ferrous Metals</option>
+                    <option value="">Plastics</option>
+                    <option value="">Ferrous Alloys</option>
+                    <option value="">Rubber</option>
+                </select>
+            </div>
+            <label for="">Date Range</label>
+            <div class="mt-1 form-group">
+                <h4>From</h4>
+                <input class="form-control" type="date">
+                <h4>To</h4>
+                <input class="form-control" type="date">
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="exampleFormControlSelect1">Data Frequency</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Today</option>
+                    <option>YesterDay</option>
+                    <option>This Week</option>
+                    <option>Last Week</option>
+                    <option>This Month</option>
+                    <option>This Year</option>
+                </select>
+            </div> -->
+            <div class="mt-2" align="right">
+                <button class="btn btn-warning btn-sm " (click)="filterData()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-9 card">
+        <div *ngIf="hide">
+            <div class="">
+                <h1 class="tableHead">Official LME-Prices</h1>
+            </div>
+            <div>
+                <h4 class="tableDate">10. February 2022</h4>
+            </div>
+            <table class="table table-striped ">
+                <thead class="thead">
+                    <tr>
+                        <th >in US Dollar per ton</th>
+                        <th class="text-left">LME Cash-Settlement</th>
+                        <th class="text-center">LME 3-months</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody ">
+                    <tr *ngFor="let data of lmeData">
+                        <td>{{data.nonFerrous}}</td>
+                        <td class="px-5">{{data.Settlement}}</td>
+                        <td class="text-center">{{data.lme3month}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table *ngIf="show" class="table  text-center">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>LME Copper Cash-Settlement</th>
+                    <th>LME Copper 3-month</th>
+                    <th>LME Copper stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of copperData">
+                    <td>{{data.date}}</td>
+                    <td>{{data.CashSettlement}}</td>
+                    <td>{{data.Copper3month}}</td>
+                    <td>{{data.CopperStock}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

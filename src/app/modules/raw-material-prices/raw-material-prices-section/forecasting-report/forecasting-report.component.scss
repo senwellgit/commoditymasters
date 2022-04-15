@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    // overflow: auto;
+
+  }
+.highLightCard{
+    background-color:#ffffff;
+    margin-top: 10px;
+    box-shadow: 3px 3px 6px 3px grey;
+}
+.newletter{
+    width: 180px; 
+    height: 250px; 
+    border: 2px solid;
+}
+.tableHead{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-bottom: 2px solid;
+    text-transform: uppercase;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .weeklyHighlights{
+      overflow: auto;
+  }

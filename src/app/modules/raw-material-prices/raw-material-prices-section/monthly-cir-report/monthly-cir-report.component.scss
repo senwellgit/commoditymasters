@@ -1,0 +1,45 @@
+.commodityList{
+    border: 2px solid #025b92;
+  background-color: #e7e7e7;
+  padding: 10px;
+  // height: 100vh;
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px grey;
+}
+.commodityList label{
+    color: #025b92;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.commodityList select {
+  margin-top: 3px;
+  font-size: 14px;
+}
+.commodityList input{
+  font-size: 13px;
+}
+.commodityList option{
+  // margin-top: 5px;
+  padding: 5px;
+  font-size: 13px;
+}
+.radiobtn label{
+  font-size: 12px;
+  margin-right: 2px;
+}
+.btn-warning:hover{
+background-color: #7ccfff;
+border-color: #7ccfff;
+font-size: 16px;
+font-weight: 600;
+}
+.btn-warning{
+background-color: #417da0;
+border-color: #417da0;
+font-size: 16px;
+font-weight: 600;
+}
+
+
+

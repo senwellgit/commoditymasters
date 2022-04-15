@@ -1,84 +1,75 @@
-<div class="logoText">
-    <p>Intelligence For Global Commodity Markets</p>
-</div>
+<div class="header fixed-top" style="background: #025b92;padding-top: 0.5%;">
+  <div class="row logo-bg" style="background:url(../../../assets/banner.png);margin-right: 0%;background-size:repeat;">
+    <div class="col-sm-8">
+      <a routerLink="/home"><img id="logo" src="./../../../assets/Logo.png" height="65%" width="45%"
+          style="padding-top: 1%;"></a><br>
 
-<div class="header">
-  
-    <br>
+      <p id="logocaption">Intelligence For Global Commodity Markets</p>
 
-    <div class="row logo-bg">
-      <div class="col-8">
-        <img id="logo" src="../../../assets/CommodityLogo.png" />
-      </div>
-    
-      <div class="col-3 contact ">
-        <ul class="contact-nbr bg-primary">
-            
-          <li><img src="../../../assets/phone-icon.png">Call: +91-8788832399</li>
-        </ul>
-        
+    </div>
+
+    <div class="col-3 contact ">
+      <ul class="contact-nbr ">
+
+        <li style="font-weight: 500;"><i class="fas fa-mobile-alt" style="margin-right: 3%;"></i>Call: +91-8788832399
+        </li>
+      </ul>
+
       <div class="social">
         <img style="width: 32px; height: 32px;" src="../../assets/in.png" />
         <img style="width: 32px; height: 32px;" src="../../assets/fb.png" />
       </div>
-      </div>
-    
     </div>
-    
-    <div class="row">
-    
-        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-gradient">
-            <div class="container-fluid">
-              <!-- <a class="navbar-brand" href="#">Commodity</a> -->
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Raw Material Prices</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Target Price Analysis</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Spend Analysis</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                   
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Service
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                  </li>
-                 
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Subscribe</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                  </li>
-                </ul>
-              </div>
+ 
+ 
+
+  <nav class="navbar navbar-expand-lg navbar-light  bg-gradient">
+    <div>
+      <button class="nav navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink='/home'>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/rawmaterialprices'>Raw Material Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/targetPrices' routerLinkActive="active">Target Price Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/spendAnalysis' routerLinkActive="active">Spend Analysis</a>
+          </li>
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" routerLinkActive="active">
+              Services
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: #025b92;">
+              <a class="dropdown-item" routerLink="/sourcing-services" routerLinkActive="active">Sourcing Services</a>
+              <a class="dropdown-item" routerLink="/purchase-intelligence" routerLinkActive="active">Purchase
+                Inteligence</a>
+              <a class="dropdown-item" routerLink="/purchase-price-variance" routerLinkActive="active">Purchase Price
+                Variance</a>
             </div>
-          </nav>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="subscribe" routerLinkActive="active">Subscribe</a>
+          </li>
+          <!-- <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">User Login</a></li> -->
+          <!-- <li class="nav-item"><a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin Login</a></li> -->
+        </ul>
+      </div>
     </div>
-    
-    </div>
+  </nav>
+</div>
+
+</div>

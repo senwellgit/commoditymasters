@@ -1,0 +1,147 @@
+<div class="row" style="height:100%;width: 100%; ">
+    <div class="col-sm-2">
+        <!-- <h1 style="color: white;">Subscribe To <br> Commodity Masters</h1> -->
+    </div>
+    <div class="col-sm-8 card">
+
+        <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit(subscribeForm.value)">
+            <div class="row card-body">
+                <div class="col-sm-1"> </div>
+                <div class="col-sm-5">
+                    <h3>Subscription Form</h3>
+
+                    <label class="form-label">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="First Name"
+                        required>
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('firstName')?.invalid && (subscribeForm.get('firstName')?.dirty || subscribeForm.get('firstName')?.touched)">
+                        <div *ngIf="subscribeForm.get('firstName')?.errors?.required">
+                            First Name is required.
+                        </div>
+                        <div *ngIf="subscribeForm.get('firstName')?.errors?.minlength">
+                            Invalid First Name
+                        </div>
+                    </div>
+
+                    <label class="form-label">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" required>
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('lastName')?.invalid && (subscribeForm.get('lastName')?.dirty || subscribeForm.get('lastName')?.touched)">
+                        <div *ngIf="subscribeForm.get('lastName')?.errors?.required">
+                            Last Name is required.
+                        </div>
+                        <div *ngIf="subscribeForm.get('lastName')?.errors?.minlength">
+                            Invalid Last Name
+                        </div>
+                    </div>
+
+                    <label class="form-label">Email</label>
+                    <input type="email" formControlName="email" class="form-control" aria-describedby="emailHelp"
+                        placeholder="Enter your email">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('email')?.invalid && (subscribeForm.get('email')?.dirty || subscribeForm.get('email')?.touched)">
+                        <div *ngIf="subscribeForm.get('email')?.errors?.required">
+                            Email is required.
+                        </div>
+                        <div
+                            *ngIf="subscribeForm.get('email')?.errors?.pattern || subscribeForm.get('email')?.errors?.email">
+                            Invalid Email
+                        </div>
+                    </div>
+
+                    <label class="form-label">Mobile number</label>
+                    <input type="" formControlName="phoneNumber" class="form-control" placeholder="Enter your number">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('phoneNumber')?.invalid && (subscribeForm.get('phoneNumber')?.dirty || subscribeForm.get('phoneNumber')?.touched)">
+                        <div *ngIf="subscribeForm.get('phoneNumber')?.errors?.required">
+                            Phone Number is required.
+                        </div>
+                        <div
+                            *ngIf="subscribeForm.get('phoneNumber')?.errors?.pattern || subscribeForm.get('phoneNumber')?.errors?.phoneNumber">
+                            Invalid Phone Number
+                        </div>
+                    </div>
+                    <label class="form-label">Designation</label>
+                    <input type="text" formControlName="designation" class="form-control"
+                        placeholder="Your Designation">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('designation')?.invalid && (subscribeForm.get('designation')?.dirty || subscribeForm.get('designation')?.touched)">
+                        <div *ngIf="subscribeForm.get('designation')?.errors?.required">
+                            Designation is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5" style="margin-top: 5%;">
+                    <label class="form-label">Organization</label>
+                    <input type="text" formControlName="organizationName" class="form-control"
+                        placeholder="Organization Name">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('organizationName')?.invalid && (subscribeForm.get('organizationName')?.dirty || subscribeForm.get('organizationName')?.touched)">
+                        <div *ngIf="subscribeForm.get('organizationName')?.errors?.required">
+                            Organization Name is required.
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Country</label>
+                        <select formControlName="country" class="form-control">
+                            <option selected value="">Select Country</option>
+                            <option value="Country 1">Country 1</option>
+                            <option value="Country 2">Country 2</option>
+                            <option value="Country 3">Country 3</option>
+                        </select>
+                        <div class="validation"
+                            *ngIf="subscribeForm.get('country')?.invalid && (subscribeForm.get('country')?.dirty || subscribeForm.get('country')?.touched)">
+                            <div *ngIf="subscribeForm.get('country')?.errors?.required">
+                                Country Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label">State</label>
+                        <select formControlName="state" class="form-control">
+                            <option selected value="">Select State</option>
+                            <option value="State 1">State 1</option>
+                            <option value="State 2">State 2</option>
+                            <option value="State 3">State 3</option>
+                        </select>
+                        <div class="validation"
+                            *ngIf="subscribeForm.get('state')?.invalid && (subscribeForm.get('state')?.dirty || subscribeForm.get('state')?.touched)">
+                            <div *ngIf="subscribeForm.get('state')?.errors?.required">
+                                State is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="form-label">Zip Code</label>
+                    <input type="" formControlName="zipCode" class="form-control" placeholder="Enter Zip Code">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('zipCode')?.invalid && (subscribeForm.get('zipCode')?.dirty || subscribeForm.get('zipCode')?.touched)">
+                        <div *ngIf="subscribeForm.get('zipCode')?.errors?.required">
+                            zip Code Name is required.
+                        </div>
+                    </div>
+
+                    <label class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
+                    <div class="validation"
+                        *ngIf="subscribeForm.get('password')?.invalid && (subscribeForm.get('password')?.dirty || subscribeForm.get('password')?.touched)">
+                        <div *ngIf="subscribeForm.get('password')?.errors?.required">
+                            Password is required.
+                        </div>
+                        <div
+                            *ngIf="subscribeForm.get('password')?.errors?.pattern || subscribeForm.get('password')?.errors?.password">
+                            Password must contain more than 8 characters, 1 numeric, 1 upper case letter, and 1 special
+                            character($@$!%*?&).
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"  [disabled]="subscribeForm.invalid" class="btn btn-danger btnSubmit">Subscribe</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

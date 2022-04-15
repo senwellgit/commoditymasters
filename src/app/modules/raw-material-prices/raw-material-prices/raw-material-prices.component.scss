@@ -1,0 +1,70 @@
+.maincard{
+    background-color:#ffffff;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: 6px 6px 6px grey;
+}
+.row{
+  padding-right: 0px !important;
+}
+.bulletList{
+    background-color: #025b92;
+    padding: 10px;
+
+  }
+  
+  .bulletList ul li:hover{
+    // font-size: 17px;
+    cursor: pointer;
+  }
+  .bulletList ul{
+    line-height: 38px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: auto;
+    margin-top: 10px;
+    list-style: none;
+    letter-spacing: 0.5px;
+    color: #fff; 
+  }
+
+  .title1{
+    border-radius: 8px;
+    font-family: "Luxurious Roman", cursive;
+    font-size: 15px;
+    font-weight: 600;
+    margin: auto;
+    position: relative;
+    padding: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
+
+
+  .card{
+    box-shadow: 6px 6px 6px grey;
+    // background: url("../../../../assets/login_background.jpg");
+    color: white;
+    // background-position: 0% 38%;
+}
+a{
+    color: rgb(177, 0, 0);   
+    margin-top: 5px;
+}
+a:hover{
+    color: #0d6efd;
+}
+
+.btnLogin{
+    background-color: #025b92;
+    border-color: #025b92;
+}
+.btnLogin:hover{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+
+

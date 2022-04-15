@@ -1,0 +1,44 @@
+
+.center { 
+    height: 75vh;
+    position: relative;
+    // border: 3px solid green; 
+  }
+  
+  .center .row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .admincard{
+    background-color:#ffffff;
+    box-shadow: 3px 3px 6px 6px grey;
+   
+}
+h1{
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: 600;
+}
+.social i{
+    font-size: 30px;
+    color: #ffffff;
+    padding: 10px;
+    padding-top: 50px;
+}
+.social{
+    margin-top: 100px;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #ff865b;
+    border-color: #ff865b;
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #fd7b4c;
+    border-color: #fd7b4c;
+}

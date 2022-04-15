@@ -1,0 +1,350 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+
+
+// tracker
+
+#tracker{
+    margin: 13px auto;
+    border: 1px solid #E5E3E1;
+    background:#d9dfe9;
+    padding: 22px 27px;
+    width: 93.9%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 0%;
+}
+#tracker h3 {
+    padding:11px 13px; 
+    width: 100%;
+    background: #025b92; 
+    color: white; 
+    font-size: small;
+    height: auto;
+}
+
+// Carousel Starts
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  
+  
+  .wrapper {
+    background: linear-gradient(60deg, #420285, #08BDBD);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    padding-top: 55%;
+    padding-bottom: 60%;
+  }
+  #wrapperhead{
+    font-size: large;
+    border-radius:25px;
+     padding-left: 3%;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .carousel__item {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    padding: 0% 1%;
+    opacity: 0;
+    filter: drop-shadow(0 2px 2px #555);
+    will-change: transform, opacity;
+    -webkit-animation: carousel-animate-vertical 18s linear infinite;
+            animation: carousel-animate-vertical 18s linear infinite;
+  }
+  
+  .carousel__item:nth-child(1) {
+    -webkit-animation-delay: calc(3s * -1);
+            animation-delay: calc(3s * -1);
+  }
+  
+  .carousel__item:nth-child(2) {
+    -webkit-animation-delay: calc(3s * 0);
+            animation-delay: calc(3s * 0);
+  }
+  
+  .carousel__item:nth-child(3) {
+    -webkit-animation-delay: calc(3s * 1);
+            animation-delay: calc(3s * 1);
+  }
+  
+  .carousel__item:nth-child(4) {
+    -webkit-animation-delay: calc(3s * 2);
+            animation-delay: calc(3s * 2);
+  }
+  
+  .carousel__item:nth-child(5) {
+    -webkit-animation-delay: calc(3s * 3);
+            animation-delay: calc(3s * 3);
+  }
+  
+ 
+  .carousel__item:last-child {
+    -webkit-animation-delay: calc(-3s * 2);
+            animation-delay: calc(-3s * 2);
+  }
+  
+  .carousel__item-head {
+    border-radius: 50%;
+    background-color: #d7f7fc;
+    width: 60px;
+    height: 60px;
+    padding: 14px;
+    position: relative;
+    margin-right: -45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel__item-body {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1px 15px 2px 65px;
+  }
+  
+  .title {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    padding-right: 5px;
+  }
+  
+  @-webkit-keyframes carousel-animate-vertical {
+    0% {
+      transform: translateY(100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+    3%, 16% {
+      transform: translateY(100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    19%, 35% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    38%, 54% {
+      transform: translateY(-100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    57% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: visible;
+    }
+    100% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @keyframes carousel-animate-vertical {
+    0% {
+      transform: translateY(100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+    3%, 16% {
+      transform: translateY(100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    19%, 35% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    38%, 54% {
+      transform: translateY(-100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    57% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: visible;
+    }
+    100% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+//   Carousel end
+
+// Card section
+
+  .card:hover{
+      background-color: #105266;
+      color: white;
+      
+  }
+  .card{
+    box-shadow: 0 0 5px #d2cbcb;
+    margin-left: 10%;
+    margin-bottom: 7%;
+    height: 97%;
+    
+  }
+  #benefits{
+    background: url("../../../../assets/benefits_bg.jpg");
+  }
+  .card-img-top{
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: 15%;
+    margin-top: 4%;
+    
+  }
+  .cardtop{
+      background-color: gray;
+  }
+  
+
+  // Card section
+
+  // welcome Section
+  .bulletList{
+    background-color: #d9dfe9;
+    // box-shadow: 5px 5px 0px 0px rgb(199, 199, 184);
+    // background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .bulletList ul li:hover{
+    font-size: 17px;
+  }
+  .bulletList ul{
+    line-height: 38px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: auto;
+    margin-top: 10px;
+    list-style: none;
+    letter-spacing: 0.5px;
+    color: #100000; 
+  }
+  .content p{
+    word-spacing: 3px;
+    letter-spacing: 1px;
+  }
+  .content img{
+    float: left;
+    padding-right: 10px;
+  }
+  .title1{
+    border-radius: 8px;
+    font-family: "Luxurious Roman", cursive;
+    font-size: 15px;
+    font-weight: 600;
+    margin: auto;
+    position: relative;
+    padding: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  // welcomne Section
+
+// Media queries
+  @media only screen and (max-width: 1000px) {
+    .row{
+      display: inline;
+    }
+    .content{
+      width: 100%;
+    }
+    
+    #prices{
+      width: 100%;
+    }
+    .wrapper{
+      max-width: 50%;
+     height: auto;
+     padding-top: 20%;
+     padding-bottom: 20%;
+    }
+    .col-sm-3{
+      width: 100%;
+    }
+    #wrapperhrad{
+      font-size:xx-large;
+      padding-left: 20%;
+      margin-left: -1%;
+      border-radius: 25px;
+    }
+    div#benefits .col-sm-4 {
+      padding-left: 30%;
+      padding-bottom: 5%;
+    }
+  }
+  @media only screen and (max-width:500px){
+    
+    .wrapper{
+      max-width: 100%;
+      height: auto;
+      padding-top: 50%;
+    padding-bottom: 50%;
+    }
+    div#benefits .col-sm-4{
+      padding-left: 0%;
+      padding-bottom: 5%;
+      padding-right: 75%;
+    }
+    .content img{
+      float:none;
+    }
+    .welcome h1{
+      font-size: 19px;
+      padding: 4% 0%;
+    }
+    .content{
+      word-spacing: 2px;
+     letter-spacing: 1px;
+     font-size: 13px;
+     padding: 4% 0%;
+    }
+    .content p{
+      padding-top: 4%;
+    }
+    .content img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media only screen and (max-width:1200px){
+    .col-lg-4{
+      width: 31.333333%;
+    }
+  }
+   

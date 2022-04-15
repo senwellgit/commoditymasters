@@ -1,0 +1,61 @@
+// .section{
+//     // border: 2px solid;
+// }
+.container{
+  margin-top: 20px;
+  // margin-left: 50px;
+  width: 100%;
+}
+.bulletList{
+    background-color: #025b92;
+    margin: 10px;
+    // margin-bottom: 200px;
+    // padding-bottom: 200px;
+    height: 100%;
+    box-shadow: 6px 6px 6px grey;
+  }
+  .bulletList li{
+    line-height: 38px;
+    font-weight: 600;
+    font-size: 14px;
+    padding-left: 20px;
+    list-style: none;
+    letter-spacing: 0.5px;
+    color: #fff; 
+    border-bottom: 2px #ffffff solid;
+  }
+
+  .bulletList li:hover{
+    background-color: #7ccfff;
+    color: black;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 3px 0px 6px #7ccfff;
+    cursor: pointer;
+  }
+  .title1{
+    border-radius: 8px;
+    font-family: "Luxurious Roman", cursive;
+    font-size: 15px;
+    font-weight: 600;
+    margin: auto;
+    position: relative;
+    padding: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
+
+  .active{
+    background: #7ccfff;
+}
+
+@media only screen and (max-width:425px){
+  .banner{
+    height: 125px;
+  }
+  }
+  
