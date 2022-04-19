@@ -43,3 +43,78 @@ font-weight: 600;
 
 
 
+.card{
+  box-shadow: 1px 0px 4px 0px;
+}
+
+.c-table {
+  vertical-align: top;
+  max-width: 100%;
+  overflow-x: auto;
+  
+  
+  white-space: nowrap;
+  border-collapse: collapse;
+  border-spacing: 2px;
+}
+
+.c-table th {
+  font-size: 15px;
+  text-align: left;
+  text-transform: uppercase;
+  background: #025b92;
+}
+
+.c-table th,
+.c-table td {
+  padding:10px 10px;
+  border: 1px solid #d9d7ce;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.th {
+  color: rgb(169, 228, 248);
+  text-align: center;
+}
+.tableHeading{
+  text-align: center;
+    background: #afc6ed;
+    margin-bottom: 0;
+}
+
+
+.table-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top:0;
+  margin-top: 40px;
+}
+.c-table{
+line-height: 12.6px;
+}
+.table-head{
+  background-color: #025b92;
+  color: #fff;
+}
+.card-header{
+  background-color: #025b92;
+  text-align: center;
+  color: #fff;
+}
+#canvas{
+  max-height: 250px;
+    width: auto;
+}
+.chart-body{
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-select{
+  width: 100px;
+}

@@ -1,78 +1,136 @@
 <div class="row" style="margin-top: 10px;">
-    <div class="col-sm-4">
-        <div class="commodityList">
-            <label for="">Commodity Head</label>
-            <div class="mt-1">
-                <select name="" id="" class="form-select">
-                    <option value="">Select</option>
-                    <option value="">Non-Ferrous Metals</option>
-                    <option value="">Ferrous Metals</option>
-                    <option value="">Plastics</option>
-                    <option value="">Ferrous Alloys</option>
-                    <option value="">Rubber</option>
-                </select>
-            </div>
-            <label for="">Commodity</label>
-            <div class="mt-1 ">
-                <select name="" id="" class="form-select">
-                    <option value="">Select</option>
-                    <option value="">Non-Ferrous Metals</option>
-                    <option value="">Ferrous Metals</option>
-                    <option value="">Plastics</option>
-                    <option value="">Ferrous Alloys</option>
-                    <option value="">Rubber</option>
-                </select>
-            </div>
-            <label for="">Price Unit</label>
-            <div class="mt-1 ">
-                <select name="" id="" class="form-select">
-                    <option value="">Select</option>
-                    <option value="">Non-Ferrous Metals</option>
-                    <option value="">Ferrous Metals</option>
-                    <option value="">Plastics</option>
-                    <option value="">Ferrous Alloys</option>
-                    <option value="">Rubber</option>
-                </select>
-            </div>
-           <div>
-            <label for="">Date Range</label>
-            <div class="mt-1  ">
-                <div>
-                    <label for="">From</label>
-                    <input type="date" class="form-control">
-                </div>
-                <div>
-                    <label for="">To</label>
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-           </div>
-            <label for="">Data Frequency</label>
-            <div class="mt-1 radiobtn">
-                <div class="row">
-                    <div class="col-6">
-                        <input class="mx-2" type="radio" value="Daily" name="radioBtn">
-                        <label for="">Daily</label>
-                    </div>
-                    <div class="col-5">
-                        <input class="mx-2" type="radio" value="Weekly" name="radioBtn">
-                        <label for="">Weekly</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <input class="mx-2" type="radio" value="Monthly" name="radioBtn">
-                        <label for="">Monthly</label>
-                    </div>
-                    <div class="col-5">
-                        <input class="mx-2" type="radio" value="Yearly" name="radioBtn">
-                        <label for="">Yearly</label>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-2" align="right">
-                <button class="btn btn-warning btn-sm ">Submit</button>
-            </div>
+  <div class="col-md-4">
+    <div class="commodityList">
+      <label for="">Copper International Market LME</label>
+      <div class="mt-1">
+        <select name="" id="" class="form-select">
+          <option value="">Select</option>
+          <option value="">Non-Ferrous Metals</option>
+          <option value="">Ferrous Metals</option>
+          <option value="">Plastics</option>
+          <option value="">Ferrous Alloys</option>
+          <option value="">Rubber</option>
+        </select>
+      </div>
+      <label for="">Commodity</label>
+      <div class="mt-1 ">
+        <select name="" id="" class="form-select">
+          <option value="">Select</option>
+          <option value="">Non-Ferrous Metals</option>
+          <option value="">Ferrous Metals</option>
+          <option value="">Plastics</option>
+          <option value="">Ferrous Alloys</option>
+          <option value="">Rubber</option>
+        </select>
+      </div>
+      <label for="">Price Unit</label>
+      <div class="mt-1 ">
+        <select name="" id="" class="form-select">
+          <option value="">Select</option>
+          <option value="">Non-Ferrous Metals</option>
+          <option value="">Ferrous Metals</option>
+          <option value="">Plastics</option>
+          <option value="">Ferrous Alloys</option>
+          <option value="">Rubber</option>
+        </select>
+      </div>
+      <div>
+        <label for="">Date Range</label>
+        <div class="mt-1  ">
+          <div>
+            <label for="">From</label>
+            <input type="date" class="form-control">
+          </div>
+          <div>
+            <label for="">To</label>
+            <input type="date" class="form-control">
+          </div>
         </div>
+      </div>
+      <label for="">Data Frequency</label>
+      <div class="mt-1 radiobtn">
+        <div class="row">
+          <div class="col-6">
+            <input class="mx-2" type="radio" value="Daily" name="radioBtn">
+            <label for="">Daily</label>
+          </div>
+          <div class="col-5">
+            <input class="mx-2" type="radio" value="Weekly" name="radioBtn">
+            <label for="">Weekly</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <input class="mx-2" type="radio" value="Monthly" name="radioBtn">
+            <label for="">Monthly</label>
+          </div>
+          <div class="col-5">
+            <input class="mx-2" type="radio" value="Yearly" name="radioBtn">
+            <label for="">Yearly</label>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2" align="right">
+        <button class="btn btn-warning btn-sm " (click)="onSubmit()">Submit</button>
+      </div>
+
     </div>
-</div>
+
+  </div>
+  <div class="col-md-8">
+    <div class="card" *ngIf="fromHide">
+      <div class="card-header">
+        <h2>Copper International Market LME</h2>
+      </div>
+      <table class="table c-table" *ngIf="tableData$ | async as tableList">
+        <thead>
+          <tr>
+          </tr>
+          <tr class="table-head">
+            <th scope="col" style="width: 5%">Month</th>
+            <th scope="col"  style="width: 10%;" *ngFor="let item of column">{{item}}</th>
+            <!-- <th scope="col" style="width: 10%;">2020</th>
+            <th scope="col" style="width: 10%;" >2021</th> -->
+            <!-- <th>2022</th> -->
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tableList; let i=index">
+           <td class="month_name">{{item[0].months.month}}</td>
+           <td *ngFor="let column of column;let i=index">{{item[i]?.value}}</td>
+           <!-- <td>{{item[1].value}}</td>
+           <td>{{item[2].value}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr class="my-5">
+  <div class="row" *ngIf="fromHide">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-md-8">
+              <h3 class="text-right">Select the chart type</h3>
+            </div>
+            <div class="col-md-4">
+              <select (change)="onChange($event)" class="form-select">
+                <option *ngFor="let chart of chartType">{{chart}}</option>
+              </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="card-body chart-body">
+          <canvas id="canvas"  width="580" height="480"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

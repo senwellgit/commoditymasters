@@ -8,6 +8,7 @@ import { RawMaterialPricesSectionComponent } from './modules/raw-material-prices
 import { RawMaterialPricesModule } from './modules/raw-material-prices/raw-material-prices.module';
 import { AdminModule } from './admin/admin.module';
 
+
 const routes: Routes = [{
 
   path: '',
@@ -49,6 +50,7 @@ const routes: Routes = [{
 { path: 'sourcing-services', component: SourcingServicesComponent },
 { path: 'purchase-price-variance', component: PurchasePriceVarianceComponent },
 {path: 'rawMaterialPricesSection',component: RawMaterialPricesSectionComponent},
+
 ];
 
 @NgModule({
