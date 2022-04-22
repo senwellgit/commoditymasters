@@ -13,7 +13,7 @@ export class MasterserviceService {
 
 
 getData(){
-  return this.http.get(environment.base_url);
+  return this.http.get(environment.base_url+"?head_id=1&type_id=1");
 }
 }
 

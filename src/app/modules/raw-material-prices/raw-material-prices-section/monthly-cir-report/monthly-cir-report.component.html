@@ -88,7 +88,7 @@
           </tr>
           <tr class="table-head">
             <th scope="col" style="width: 5%">Month</th>
-            <th scope="col"  style="width: 10%;" *ngFor="let item of column">{{item}}</th>
+            <th scope="col"  style="width: 10%;" *ngFor="let item of yearsData">{{item}}</th>
             <!-- <th scope="col" style="width: 10%;">2020</th>
             <th scope="col" style="width: 10%;" >2021</th> -->
             <!-- <th>2022</th> -->
@@ -96,12 +96,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of tableList; let i=index">
-           <td class="month_name">{{item[0].months.month}}</td>
+          <!-- <tr *ngFor="let item of tableList; let i=index" >
+           <td class="month_name">{{item[0]?.month?.month}}</td>
            <td *ngFor="let column of column;let i=index">{{item[i]?.value}}</td>
-           <!-- <td>{{item[1].value}}</td>
-           <td>{{item[2].value}}</td> -->
-          </tr>
+           <td>{{item[1].value}}</td>
+           <td>{{item[2].value}}</td>
+          </tr> -->
+
+          
+            <tr *ngFor="let item of months;let monthIndex=index">
+              <td>{{ months[monthIndex] }}</td>
+              <ng-container *ngFor="let year of yearsData;let yearIndex=index">
+                <td>{{tableList[yearIndex][monthIndex]?.value ? tableList[yearIndex][monthIndex]?.value : ''}}</td>
+              </ng-container>
+            </tr>
+         
         </tbody>
       </table>
     </div>
