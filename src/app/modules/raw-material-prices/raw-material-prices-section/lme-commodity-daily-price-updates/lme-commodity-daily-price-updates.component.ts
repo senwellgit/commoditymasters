@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MasterserviceService } from 'src/app/masterservice.service';
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -9,6 +10,12 @@ const FileSaver = require('file-saver');
   styleUrls: ['./lme-commodity-daily-price-updates.component.scss']
 })
 export class LmeCommodityDailyPriceUpdatesComponent implements OnInit {
+
+ exceldata:any = [];
+show:boolean=false;
+hide:boolean=true;
+  commodityType: any;
+  commodityHead:any;
 /*
   years:any[]=[2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021];
   months:any[]=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December']
@@ -84,19 +91,50 @@ lmeData=[
 
 ]
 
-show:boolean=false;
-hide:boolean=true;
 
 
 
-  constructor() { }
+  constructor(private masterService:MasterserviceService) { }
+
+ 
 
   ngOnInit(): void {
+    this.getholedata()
+   
+    this.getHeadData()
+    
   }
 
 filterData(){
   this.show=true;
   this.hide=false;
 }
+
+getholedata() {
+  this.masterService.getData(1,1).subscribe((data)=>{
+    this.exceldata.data;
+    console.log(data);
+    
+  })
+}
+
+getHeadData(){
+  this.masterService.getHead().subscribe((res)=>{
+    this.commodityHead = res
+    console.log("***************",res);
+  })
+}
+
+selectHead(event:any){
+  console.log("event.target.value",event.target.value)
+  const data=event.target.value
+  this.masterService.gettypebyheadid(data).subscribe((res)=>{
+    this.commodityType=res;
+      console.log("types>>>>>>>>>>>>>>",res)
+      
+  });
+  
+  }
+  
 
 }

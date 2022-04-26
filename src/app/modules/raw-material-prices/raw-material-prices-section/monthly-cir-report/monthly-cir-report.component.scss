@@ -47,13 +47,13 @@ font-weight: 600;
   box-shadow: 1px 0px 4px 0px;
 }
 
-.c-table {
+.c-table{
   vertical-align: top;
   max-width: 100%;
-  overflow-x: auto;
-  
-  
-  white-space: nowrap;
+  overflow-x: scroll;
+  display:block;
+    
+  overflow-y: hidden;
   border-collapse: collapse;
   border-spacing: 2px;
 }
@@ -98,6 +98,11 @@ line-height: 12.6px;
   background-color: #025b92;
   color: #fff;
 }
+.tbody{
+  
+  display: table;
+  width: 100%;
+}
 .card-header{
   background-color: #025b92;
   text-align: center;
@@ -118,3 +123,4 @@ line-height: 12.6px;
 .form-select{
   width: 100px;
 }
+

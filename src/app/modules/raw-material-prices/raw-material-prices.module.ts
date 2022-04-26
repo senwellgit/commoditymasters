@@ -12,7 +12,8 @@ import { QuarterlyNewsletterComponent } from './raw-material-prices-section/quar
 import { ForecastingReportComponent } from './raw-material-prices-section/forecasting-report/forecasting-report.component';
 import { RfqBenchMarkingComponent } from './raw-material-prices-section/rfq-bench-marking/rfq-bench-marking.component';
 import { GlobalImportExportDataComponent } from './raw-material-prices-section/global-import-export-data/global-import-export-data.component'; 
-
+import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { GlobalImportExportDataComponent } from './raw-material-prices-section/g
     GlobalImportExportDataComponent
   ],
   imports: [
-    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,
+    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,ReactiveFormsModule,FormsModule
  
     
   ]

@@ -1,145 +1,156 @@
-<div class="row" style="margin-top: 10px;">
-  <div class="col-md-4">
-    <div class="commodityList">
-      <label for="">Copper International Market LME</label>
-      <div class="mt-1">
-        <select name="" id="" class="form-select">
-          <option value="">Select</option>
-          <option value="">Non-Ferrous Metals</option>
-          <option value="">Ferrous Metals</option>
-          <option value="">Plastics</option>
-          <option value="">Ferrous Alloys</option>
-          <option value="">Rubber</option>
-        </select>
-      </div>
-      <label for="">Commodity</label>
-      <div class="mt-1 ">
-        <select name="" id="" class="form-select">
-          <option value="">Select</option>
-          <option value="">Non-Ferrous Metals</option>
-          <option value="">Ferrous Metals</option>
-          <option value="">Plastics</option>
-          <option value="">Ferrous Alloys</option>
-          <option value="">Rubber</option>
-        </select>
-      </div>
-      <label for="">Price Unit</label>
-      <div class="mt-1 ">
-        <select name="" id="" class="form-select">
-          <option value="">Select</option>
-          <option value="">Non-Ferrous Metals</option>
-          <option value="">Ferrous Metals</option>
-          <option value="">Plastics</option>
-          <option value="">Ferrous Alloys</option>
-          <option value="">Rubber</option>
-        </select>
-      </div>
-      <div>
-        <label for="">Date Range</label>
-        <div class="mt-1  ">
-          <div>
-            <label for="">From</label>
-            <input type="date" class="form-control">
-          </div>
-          <div>
-            <label for="">To</label>
-            <input type="date" class="form-control">
+<form [formGroup]="formdata" (submit)="onSubmits(formdata.value)">
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-md-4">
+      <div class="commodityList">x
+        <label for="">Copper International Market LME</label>
+        <div class="mt-1">
+          <select name="" id="" class="form-select " formControlName="head" (change)="selectHead($event)" required>
+            <option value="" selected>Select</option>
+            <ng-container *ngFor="let head of commodityHead">
+              <option *ngIf="head?.head != ''" value="{{head.id}}">{{head?.head}}</option>
+            </ng-container>
+         
+          </select>
+        </div>
+        <label for="">Commodity</label>
+        <div class="mt-1 ">
+          <select name="" id="" class="form-select" formControlName="type" required>
+            <option value="" selected>Select</option>
+            <option value="{{type.id}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}</option>
+          </select>
+        </div>
+        <label for="">Price Unit</label>
+        <div class="mt-1 ">
+          <select name="" id="" class="form-select">
+            <option value="">Select</option>
+            <option value="">Non-Ferrous Metals</option>
+            <option value="">Ferrous Metals</option>
+            <option value="">Plastics</option>
+            <option value="">Ferrous Alloys</option>
+            <option value="">Rubber</option>
+          </select>
+        </div>
+        <div>
+          <label for="">Date Range</label>
+          <div class="mt-1  ">
+            <div>
+              <label for="">From</label>
+              <input type="date" class="form-control">
+            </div>
+            <div>
+              <label for="">To</label>
+              <input type="date" class="form-control">
+            </div>
           </div>
         </div>
-      </div>
-      <label for="">Data Frequency</label>
-      <div class="mt-1 radiobtn">
-        <div class="row">
-          <div class="col-6">
-            <input class="mx-2" type="radio" value="Daily" name="radioBtn">
-            <label for="">Daily</label>
+        <label for="">Data Frequency</label>
+        <div class="mt-1 radiobtn">
+          <div class="row">
+            <div class="col-6">
+              <input class="mx-2" type="radio" value="Daily" name="radioBtn">
+              <label for="">Daily</label>
+            </div>
+            <div class="col-5">
+              <input class="mx-2" type="radio" value="Weekly" name="radioBtn">
+              <label for="">Weekly</label>
+            </div>
           </div>
-          <div class="col-5">
-            <input class="mx-2" type="radio" value="Weekly" name="radioBtn">
-            <label for="">Weekly</label>
+          <div class="row">
+            <div class="col-6">
+              <input class="mx-2" type="radio" value="Monthly" name="radioBtn">
+              <label for="">Monthly</label>
+            </div>
+            <div class="col-5">
+              <input class="mx-2" type="radio" value="Yearly" name="radioBtn">
+              <label for="">Yearly</label>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-6">
-            <input class="mx-2" type="radio" value="Monthly" name="radioBtn">
-            <label for="">Monthly</label>
-          </div>
-          <div class="col-5">
-            <input class="mx-2" type="radio" value="Yearly" name="radioBtn">
-            <label for="">Yearly</label>
-          </div>
+        <div class="mt-2" align="right">
+          <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid">Submit</button>
         </div>
       </div>
-      <div class="mt-2" align="right">
-        <button class="btn btn-warning btn-sm " (click)="onSubmit()">Submit</button>
-      </div>
-
     </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>Copper International Market LME </h2>
+        </div>
+        <table class="table c-table" *ngIf="tableData$ | async as tableList">
+          <thead>
+            <tr>
+            </tr>
+            <tr class="table-head">
+              <th scope="col" style="width: 5%">Month</th>
+              <th scope="col" style="width: 10%;" *ngFor="let item of yearsData">{{item}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr *ngFor="let item of tableList; let i=index" >
+             <td class="month_name">{{item[0]?.month?.month}}</td>
+             <td *ngFor="let column of column;let i=index">{{item[i]?.value}}</td>
+             <td>{{item[1].value}}</td>
+             <td>{{item[2].value}}</td>
+            </tr> -->
 
-  </div>
-  <div class="col-md-8">
-    <div class="card" *ngIf="fromHide">
-      <div class="card-header">
-        <h2>Copper International Market LME</h2>
-      </div>
-      <table class="table c-table" *ngIf="tableData$ | async as tableList">
-        <thead>
-          <tr>
-          </tr>
-          <tr class="table-head">
-            <th scope="col" style="width: 5%">Month</th>
-            <th scope="col"  style="width: 10%;" *ngFor="let item of yearsData">{{item}}</th>
-            <!-- <th scope="col" style="width: 10%;">2020</th>
-            <th scope="col" style="width: 10%;" >2021</th> -->
-            <!-- <th>2022</th> -->
 
-          </tr>
-        </thead>
-        <tbody>
-          <!-- <tr *ngFor="let item of tableList; let i=index" >
-           <td class="month_name">{{item[0]?.month?.month}}</td>
-           <td *ngFor="let column of column;let i=index">{{item[i]?.value}}</td>
-           <td>{{item[1].value}}</td>
-           <td>{{item[2].value}}</td>
-          </tr> -->
-
-          
-            <tr *ngFor="let item of months;let monthIndex=index">
+            <!-- <tr *ngFor="let item of months;let monthIndex=index">
               <td>{{ months[monthIndex] }}</td>
               <ng-container *ngFor="let year of yearsData;let yearIndex=index">
-                <td>{{tableList[yearIndex][monthIndex]?.value ? tableList[yearIndex][monthIndex]?.value : ''}}</td>
+                <td>{{tableList[yearIndex][monthIndex]?.value ? tableList[yearIndex][monthIndex]?.value: ''}}</td>
+              </ng-container>
+            </tr> -->
+            <!-- me done -->
+            <tr *ngFor="let item of months;let monthIndex=index  ">
+              <td>{{ months[monthIndex] }}</td>
+              <ng-container *ngFor="let year of yearsData;let yearIndex=index" >
+
+
+                <td [ngSwitch]="tableList[yearIndex][monthIndex]?.currency?.currency.toLowerCase()">
+                  <span *ngSwitchCase="'yuan'">
+                    ¥{{ tableList[yearIndex][monthIndex]?.value }}
+                  </span>
+                  <span *ngSwitchCase="'usd'">
+                    ${{ tableList[yearIndex][monthIndex]?.value}}
+                  </span>
+                  <span *ngSwitchCase="'euro'">
+                    €{{ tableList[yearIndex][monthIndex]?.value}}
+                 </span>
+                  <span *ngSwitchDefault class="badge">
+                    ${{ tableList[yearIndex][monthIndex]?.value}}
+                  </span>
+             </td>
+                          
+             <!-- <td>{{tableList[yearIndex][monthIndex]?.value  ? tableList[yearIndex][monthIndex]?.value: ''}}</td> -->
               </ng-container>
             </tr>
-         
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <hr class="my-5">
-  <div class="row" *ngIf="fromHide">
-    <div class="col-md-12">
-      <div class="card ">
-        <div class="card-header ">
-          <div class="row">
-            <div class="col-md-8">
-              <h3 class="text-right">Select the chart type</h3>
-            </div>
-            <div class="col-md-4">
-              <select (change)="onChange($event)" class="form-select">
-                <option *ngFor="let chart of chartType">{{chart}}</option>
-              </select>
-            </div>
-          </div>
-          
-        </div>
-        <div class="card-body chart-body">
-          <canvas id="canvas"  width="580" height="480"></canvas>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</form>
+<hr class="my-5">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="text-right">Select the chart type</h3>
+          </div>
+          <div class="col-md-4">
+            <select (change)="onChange($event)" class="form-select">
+              <option *ngFor="let chart of chartType">{{chart}}</option>
+            </select>
+          </div>
+        </div>
 
-
-
-
-
+      </div>
+      <div class="card-body chart-body">
+        <canvas id="canvas"></canvas>
+        <!-- <canvas id="canvas" width="580" height="480"></canvas> -->
+      </div>
+    </div>
+  </div>
+</div>
