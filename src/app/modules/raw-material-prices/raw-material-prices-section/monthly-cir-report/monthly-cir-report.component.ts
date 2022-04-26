@@ -32,23 +32,22 @@ export class MonthlyCirReportComponent implements OnInit {
   column: Array<number> = [];
   type: any = "line";
   type2: any;
-  colorsCode: Array<string> = [
-    "#067c19",
-    "#eb1515",
-    "#28e8e9",
-    "#3e35ee",
-    "#ec35ee",
-  ];
+  colorsCode:Array<string> = ['#067c19','#eb1515','#00ffff','#ec35ee','#990000','#00cc00'];
+
   headId: any;
   typeId: any;
   commodity_type: any;
   method: any;
   commodityHead_commodityType: any;
+  currency : string = '';
 
   _tableData$ = this.masterService.getData(2, 13).pipe(
     map((res: any) => {
       let table: any[] = [];
       this.column = res.column;
+      console.log("materialdata",table);
+      
+      this.commodity_type = res.materialData[0].commodity_type.type;
 
       // all sorted years
       this.yearsData = this.column.sort();
@@ -69,6 +68,7 @@ export class MonthlyCirReportComponent implements OnInit {
           (a: any, b: any) => a.month.id - b.month.id
         );
         console.log("Year Data", sorted);
+        this.currency =sorted[0].UOM;
 
         let i = 0;
         let array = [];
@@ -95,19 +95,6 @@ export class MonthlyCirReportComponent implements OnInit {
         table.push(array);
       }
 
-      /* this is for table data based on month_id*/
-
-      // for (let i = 0; i < this.months.length; i++) {
-      //     let monthData = res.materialData.filter((ele:any)=>{
-      //       if(ele.month.month == this.months[i]){
-      //         return true;
-      //       }else{
-      //         return false;
-      //       }
-      //     });
-      //     table.push(monthData);
-      //
-      // }
       for (let index = 0; index < this.column.length; index++) {
         let chartData: any = [];
         res.materialData.forEach((ele: any) => {
@@ -155,6 +142,9 @@ export class MonthlyCirReportComponent implements OnInit {
     this.getHeadData();
   }
 
+  onSubmit() {
+    this.fromHide = true;
+  }
   showChart() {
     if (this.chart) {
       this.chart.destroy();
@@ -164,18 +154,39 @@ export class MonthlyCirReportComponent implements OnInit {
       return {
         label: res.year,
         borderColor: res.colorCode,
-        backgroundColor: ["#ed05f4", "#d92b0d", "#1cd90d"],
+        backgroundColor:res.colorCode,
         data: res.data,
-        // legend:{position:'bottom'},
+        fill: false,
+        tension :0.1
       };
     });
 
     this.chart = new Chart("canvas", {
       options: {
+        maintainAspectRatio:false,
+        pointRadius: 2,
+        pointHoverRadius: 7,
+         title: {
+           display: true,
+           text: "chart"
+       },
         plugins: {
           legend: {
             display: true,
             position: "bottom",
+          },
+        },
+        scales: {
+          
+          x: {
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            grid: {
+              display: false,
+            },
           },
         },
       },
@@ -201,7 +212,6 @@ export class MonthlyCirReportComponent implements OnInit {
   }
 
   onChange(selected_chart: any) {
-    // this.type = selected_chart?.masterService?.value;
     this.type = selected_chart.target.value;
     this.showChart();
   }
@@ -214,15 +224,13 @@ export class MonthlyCirReportComponent implements OnInit {
   onSubmits(data: any) {
     this.commodityHead_commodityType = data;
     console.log("hello", data);
-    this.tableData$ = this.masterService.getData(+data.head, +data.type).pipe(
+    this._tableData$ = this.masterService.getData(+data.head, +data.type).pipe(
       map((res: any) => {
         let table: any[] = [];
         this.column = res.column;
-
+        this.commodity_type = res.materialData[0].commodity_type.type;
         // all sorted years
         this.yearsData = this.column.sort();
-
-        let years = [];
 
         for (let index = 0; index < this.yearsData.length; index++) {
           const element = this.yearsData[index];
@@ -263,24 +271,12 @@ export class MonthlyCirReportComponent implements OnInit {
               array.push(null);
             }
           }
-
+          
           table.push(array);
           
+          this.currency =sorted[0].UOM;
         }
 
-        /* this is for table data based on month_id*/
-
-        // for (let i = 0; i < this.months.length; i++) {
-        //     let monthData = res.materialData.filter((ele:any)=>{
-        //       if(ele.month.month == this.months[i]){
-        //         return true;
-        //       }else{
-        //         return false;
-        //       }
-        //     });
-        //     table.push(monthData);
-        //
-        // }
         for (let index = 0; index < this.column.length; index++) {
           let chartData: any = [];
           res.materialData.forEach((ele: any) => {
@@ -303,7 +299,6 @@ export class MonthlyCirReportComponent implements OnInit {
   getHeadData() {
     this.masterService.getHead().subscribe((res) => {
       this.commodityHead = res;
-      console.log("***************", res);
     });
   }
 
@@ -312,7 +307,9 @@ export class MonthlyCirReportComponent implements OnInit {
     const data = event.target.value;
     this.masterService.gettypebyheadid(data).subscribe((res) => {
       this.commodityType = res;
-      console.log("types>>>>>>>>>>>>>>", res);
     });
+  }
+  selectTypes(event:any){
+    this.commodity_type = event.target.value;
   }
 }

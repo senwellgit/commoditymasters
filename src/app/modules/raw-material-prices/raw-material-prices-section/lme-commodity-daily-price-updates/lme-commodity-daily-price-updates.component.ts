@@ -121,7 +121,6 @@ getholedata() {
 getHeadData(){
   this.masterService.getHead().subscribe((res)=>{
     this.commodityHead = res
-    console.log("***************",res);
   })
 }
 
@@ -130,7 +129,6 @@ selectHead(event:any){
   const data=event.target.value
   this.masterService.gettypebyheadid(data).subscribe((res)=>{
     this.commodityType=res;
-      console.log("types>>>>>>>>>>>>>>",res)
       
   });
   

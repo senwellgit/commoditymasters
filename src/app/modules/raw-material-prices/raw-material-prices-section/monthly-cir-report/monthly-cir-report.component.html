@@ -1,7 +1,7 @@
 <form [formGroup]="formdata" (submit)="onSubmits(formdata.value)">
-  <div class="row" style="margin-top: 10px;">
+  <div class="row" style="margin-top: 30px;">
     <div class="col-md-4">
-      <div class="commodityList">x
+      <div class="commodityList">
         <label for="">Copper International Market LME</label>
         <div class="mt-1">
           <select name="" id="" class="form-select " formControlName="head" (change)="selectHead($event)" required>
@@ -67,14 +67,15 @@
           </div>
         </div>
         <div class="mt-2" align="right">
-          <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid">Submit</button>
+          <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid" (click)="onSubmit()">Submit</button>
         </div>
       </div>
     </div>
     <div class="col-md-8">
+      <div *ngIf="fromHide">
       <div class="card">
         <div class="card-header">
-          <h2>Copper International Market LME </h2>
+          <h2>{{commodity_type}} International Market LME</h2>
         </div>
         <table class="table c-table" *ngIf="tableData$ | async as tableList">
           <thead>
@@ -86,21 +87,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- <tr *ngFor="let item of tableList; let i=index" >
-             <td class="month_name">{{item[0]?.month?.month}}</td>
-             <td *ngFor="let column of column;let i=index">{{item[i]?.value}}</td>
-             <td>{{item[1].value}}</td>
-             <td>{{item[2].value}}</td>
-            </tr> -->
-
-
-            <!-- <tr *ngFor="let item of months;let monthIndex=index">
-              <td>{{ months[monthIndex] }}</td>
-              <ng-container *ngFor="let year of yearsData;let yearIndex=index">
-                <td>{{tableList[yearIndex][monthIndex]?.value ? tableList[yearIndex][monthIndex]?.value: ''}}</td>
-              </ng-container>
-            </tr> -->
-            <!-- me done -->
             <tr *ngFor="let item of months;let monthIndex=index  ">
               <td>{{ months[monthIndex] }}</td>
               <ng-container *ngFor="let year of yearsData;let yearIndex=index" >
@@ -121,23 +107,22 @@
                   </span>
              </td>
                           
-             <!-- <td>{{tableList[yearIndex][monthIndex]?.value  ? tableList[yearIndex][monthIndex]?.value: ''}}</td> -->
               </ng-container>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    </div>
   </div>
 </form>
 <hr class="my-5">
-<div class="row">
+<div class="row" *ngIf="fromHide">
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
         <div class="row">
           <div class="col-md-8">
-            <h3 class="text-right">Select the chart type</h3>
           </div>
           <div class="col-md-4">
             <select (change)="onChange($event)" class="form-select">
@@ -147,10 +132,14 @@
         </div>
 
       </div>
-      <div class="card-body chart-body">
-        <canvas id="canvas"></canvas>
-        <!-- <canvas id="canvas" width="580" height="480"></canvas> -->
+      <div class="card-body chart-body row">
+        <div class="col-1">
+          <h2 class="vertical-text"> {{currency}}</h2>
+        </div>
+        <div class="col-11">
+          <h2 class="text-right">LME {{commodity_type}}</h2>
+          <canvas id="canvas"></canvas>
+        </div>
       </div>
-    </div>
   </div>
 </div>
