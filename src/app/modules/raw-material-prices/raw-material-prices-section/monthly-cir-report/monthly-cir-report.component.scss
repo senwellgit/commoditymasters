@@ -45,12 +45,12 @@ font-weight: 600;
 
 .card{
   box-shadow: 1px 0px 4px 0px;
+  margin-top: 32px;
 }
 
 .c-table{
   max-width: 100%;
   display:block;
-  overflow-y: hidden;
   border-collapse: collapse;
   border-spacing: 2px;
 }
@@ -69,6 +69,7 @@ font-weight: 600;
   column-gap: 10px;
   align-items: center;
 }
+
 
 .th {
   color: rgb(169, 228, 248);
@@ -100,7 +101,6 @@ line-height: 12.6px;
   background-color: #025b92;
   text-align: center;
   color: #fff;
-  margin-top: 18px;
 }
 #canvas{
   max-height: 250px;
@@ -132,14 +132,18 @@ line-height: 12.6px;
   transform: rotate(180deg);
   text-orientation: mixed;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 800;
- 
-  /* margin: -153px; */
   margin-top: 116px;
-  /* margin-bottom: -25px; */
   position: absolute;
-
-  
 }
+
+@media (min-width: 768px) {
+.col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+    margin-top: -28px;
+}
+}
+
 

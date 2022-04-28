@@ -25,6 +25,10 @@ gettypebyheadid(id:any){
   console.log(environment.base_url + 'type/'+''+id);
   return this.http.get(environment.base_url + 'type/'+''+id)
 }
+
+getallData(){
+  return this.http.get(environment.base_url + 'All')
+}
 }
 
 
