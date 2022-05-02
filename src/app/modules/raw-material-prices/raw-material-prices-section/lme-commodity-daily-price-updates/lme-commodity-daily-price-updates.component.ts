@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MasterserviceService } from 'src/app/masterservice.service';
 
@@ -10,12 +11,6 @@ const FileSaver = require('file-saver');
   styleUrls: ['./lme-commodity-daily-price-updates.component.scss']
 })
 export class LmeCommodityDailyPriceUpdatesComponent implements OnInit {
-
- exceldata:any = [];
-show:boolean=false;
-hide:boolean=true;
-  commodityType: any;
-  commodityHead:any;
 /*
   years:any[]=[2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021];
   months:any[]=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December']
@@ -91,48 +86,51 @@ lmeData=[
 
 ]
 
+show:boolean=false;
+hide:boolean=true;
+  commodityType: any=[];
+  ex: any=[];
+  commodityHead: any=[];
+  alldata: any=[];
+  data: any=[];
 
 
 
   constructor(private masterService:MasterserviceService) { }
 
- 
-
   ngOnInit(): void {
-    this.getholedata()
-   
-    this.getHeadData()
-    
+    this.getHeadData();
+    this.getdaly()
   }
 
 filterData(){
   this.show=true;
   this.hide=false;
 }
+getHeadData() {
+  this.masterService.getHead().subscribe((res) => {
+    this.commodityHead = res;
+    console.log("***************", res);
+  });
+}
 
-getholedata() {
-  this.masterService.getData(1,1).subscribe((data)=>{
-    this.exceldata.data;
-    console.log(data);
+selectHead(event: any) {
+  console.log("event.target.value", event.target.value);
+  const data = event.target.value;
+  this.masterService.gettypebyheadid(data).subscribe((res) => {
+    this.commodityType = res;
+    console.log("types>>>>>>>>>>>>>>", res);
+  });
+}
+getdaly()
+{
+  this.masterService.getmonth().subscribe((res:any)=>{
+    this.data=res.data
+    console.log("all date",res);
     
   })
+  
 }
 
-getHeadData(){
-  this.masterService.getHead().subscribe((res)=>{
-    this.commodityHead = res
-  })
-}
-
-selectHead(event:any){
-  console.log("event.target.value",event.target.value)
-  const data=event.target.value
-  this.masterService.gettypebyheadid(data).subscribe((res)=>{
-    this.commodityType=res;
-      
-  });
   
-  }
-  
-
 }

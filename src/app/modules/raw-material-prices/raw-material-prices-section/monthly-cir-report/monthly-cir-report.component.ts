@@ -12,6 +12,7 @@ Chart.register(...registerables);
   styleUrls: ["./monthly-cir-report.component.scss"],
 })
 export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
+  
   show: boolean = false;
   hide: boolean = true;
   commodityType: any;
@@ -320,7 +321,6 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
     const data = event.target.value;
     this.masterService.gettypebyheadid(data).subscribe((res) => {
       this.commodityType = res;
-      
     });
   }
   selectTypes(event:any){
@@ -330,7 +330,9 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
   getdata() {
     this.masterService.getData(this.commodityHead_commodityType.head, this.commodityHead_commodityType.type).subscribe((res)=>{
       this.entire_Data = res;
+     
       this.avg = this.entire_Data.average.sort((a:any,b:any)=>{
+        
         return a-b
       })
       

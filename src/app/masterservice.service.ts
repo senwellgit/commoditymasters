@@ -24,10 +24,17 @@ getHead(){
 gettypebyheadid(id:any){
   console.log(environment.base_url + 'type/'+''+id);
   return this.http.get(environment.base_url + 'type/'+''+id)
+} 
+getty(){
+  console.log(environment.base_url + 'commodities/'+'');
+  return this.http.get(environment.base_url + 'commodities')
 }
 
 getallData(){
   return this.http.get(environment.base_url + 'All')
+}
+getmonth(){
+  return this.http.get(environment.base_url+"day-data")
 }
 }
 
