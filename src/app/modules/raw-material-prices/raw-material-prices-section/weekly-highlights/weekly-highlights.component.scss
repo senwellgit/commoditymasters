@@ -8,13 +8,14 @@ table {
     margin-top: 10px;
     box-shadow: 3px 3px 6px 3px grey;
 }
-.newletter{
-    width: 180px; 
-    height: 250px; 
-    border: 2px solid;
-}
+// .newletter{
+//     width: 180px; 
+//     height: 250px; 
+//     border: 2px solid;
+//     margin-bottom: 10px;
+// }
 .tableHead{
-    margin-top: 5px;
+    margin-top: 25px;
     padding: 10px;
     background-color: black;
     color: white;
@@ -24,7 +25,37 @@ table {
     font-size: 25px;
     font-weight: 600;
     letter-spacing: 1px;
+  
   }
   .weeklyHighlights{
       overflow: auto;
   }
+ 
+  h1{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  
+  }
+  .div{
+    border-bottom: 2px solid;
+  }
+    .newletter{
+        width: 180px; 
+        height: 250px; 
+        border: 2px solid;
+        margin-bottom: 10px;
+    }  
+  
+ 
+  hr{
+    border: 1px solid;
+    border-color: black;
+  }
+  .week{
+    border-bottom: 2px solid;
+    color:black;
+  }
+  .highLightCard{
+    margin-top:15px;
+}

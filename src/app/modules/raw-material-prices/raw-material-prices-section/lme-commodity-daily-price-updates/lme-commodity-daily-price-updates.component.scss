@@ -62,12 +62,15 @@ table {
   // height: 100vh;
   border-radius: 5px;
   box-shadow: 3px 3px 6px grey;
+  margin-left: -16px;
+  text-align: center;
 }
 .commodityList label{
     color: #025b92;
     margin-top: 10px;
     font-size: 16px;
     font-weight: 500;
+    margin-left: -9px;
 }
 .commodityList select {
   margin-top: 3px;

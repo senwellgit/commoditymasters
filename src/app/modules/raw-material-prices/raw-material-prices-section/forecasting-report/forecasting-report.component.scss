@@ -13,8 +13,8 @@ table {
     height: 250px; 
     border: 2px solid;
 }
-.tableHead{
-    margin-top: 5px;
+.tablehead{
+    margin-top: 15px;
     padding: 10px;
     background-color: black;
     color: white;
@@ -24,7 +24,27 @@ table {
     font-size: 25px;
     font-weight: 600;
     letter-spacing: 1px;
+    margin-top: 15px;
   }
-  .weeklyHighlights{
-      overflow: auto;
-  }
+//   .weeklyHighlights{
+//       overflow: auto;
+//   }
+  .newLetterCard{
+    background-color:#ffffff;
+    margin-top: 10px;
+    // margin-bottom: 5%;
+    box-shadow: 3px 3px 6px 3px grey;
+}
+.newletter{
+    width: 180px; 
+    height: 250px; 
+    border: 2px solid;
+    margin-bottom: 10px;
+}
+
+.highLightCard{
+    margin-top:15px;
+}
+.div{
+  border-bottom: 2px solid;
+}

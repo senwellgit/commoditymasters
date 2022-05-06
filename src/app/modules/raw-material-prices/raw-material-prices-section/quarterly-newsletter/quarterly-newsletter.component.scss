@@ -32,9 +32,10 @@ table {
     width: 180px; 
     height: 250px; 
     border: 2px solid;
+    margin-bottom: 10px;
 }
-.tableHead{
-    margin-top: 5px;
+.tablehead{
+    margin-top: 15px;
     padding: 10px;
     background-color: black;
     color: white;
@@ -45,3 +46,11 @@ table {
     font-weight: 600;
     letter-spacing: 1px;
   }
+  
+  .highLightCard{
+    margin-top:15px;
+}
+.div{
+    border-bottom: 2px solid;
+  }
+  

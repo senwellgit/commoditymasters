@@ -25,6 +25,9 @@ gettypebyheadid(id:any){
   console.log(environment.base_url + 'type/'+''+id);
   return this.http.get(environment.base_url + 'type/'+''+id)
 }
+getDay(head_id: any, type_id: any, start_date:any, end_date:any){
+  return this.http.get(environment.base_url+"day"+`?head_id= ${head_id}&type_id=${type_id}&start_date=${start_date}&end_date=${end_date}`)
+}
 }
 
 

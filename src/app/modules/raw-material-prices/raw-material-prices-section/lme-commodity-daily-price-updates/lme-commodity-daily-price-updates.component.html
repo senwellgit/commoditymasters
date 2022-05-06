@@ -100,41 +100,45 @@
 
 <div class="row" style="margin-top: 10px;">
     <div class="col-sm-3">
-        <div class="commodityList">
-            <label for="">Commodity Head </label>
-            <div class="mt-1 form-group">
-                <select class="form-select" name="" id="" aria-expanded="false"  (change)="selectHead($event)" >
-                    <!-- <option *ngFor="let data of commodityData" value="">{{data.nonFerrous_Metals}}</option> -->
-                    <option value="">Select</option>
-                   
-                    <ng-container *ngFor="let head of commodityHead">
-                        <option *ngIf="head?.head != ''" value="{{head.id}}">{{head?.head}}</option>
-                      </ng-container>
-                   
-                </select>
-            </div>
-            <label for="">Commodity</label>
-            <div class="mt-1 form-group">
-                <select class="form-select" name="" id="" aria-expanded="false">
-                      <option value="">Select</option> 
-                    <option value="{{type.type}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}</option>
-                   <!--
+    <form [formGroup]="formdata" (submit)="onSubmits(formdata.value)">
+            <div class="commodityList">
+                <label for="">Commodity Head </label>
+                <div class="mt-1 form-group">
+                    <select name="" id="" class="form-select " formControlName="head" (change)="selectHead($event)"
+                        required>
+                        <option value="" selected>Select</option>
+                        <ng-container *ngFor="let head of commodityHead">
+                            <option *ngIf="head?.head != '' " value="{{head.id}}">{{head?.head}}</option>
+                        </ng-container>
+
+                    </select>
+                </div>
+                <label for="">Commodity</label>
+                <div class="mt-1 form-group">
+                    <!--
                     <option value="">Non-Ferrous Metals</option>
                     <option value="">Ferrous Metals</option>
                     <option value="">Plastics</option>
                     <option value="">Ferrous Alloys</option>
                     <option value="">Rubber</option> -->
-                </select>
-            </div>
-            <label for="">Date Range</label>
+                    <select name="" id="" class="form-select" formControlName="type" required>
+                        <option value="" selected>Select</option>
+                        <option value="{{type.id}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}
+                        </option>
+                    </select>
+
+                </div>
+                <label for="">Date Range</label>
             <div class="mt-1 form-group">
                 <h4>From</h4>
-                <input class="form-control" type="date">
+                <input class="form-control" type="date" formControlName="start_date">
                 <h4>To</h4>
-                <input class="form-control" type="date">
+                <input class="form-control" type="date" formControlName="end_date">
             </div>
 
-            <!-- <div class="form-group">
+
+
+                <!-- <div class="form-group">
                 <label for="exampleFormControlSelect1">Data Frequency</label>
                 <select class="form-control" id="exampleFormControlSelect1">
                     <option>Today</option>
@@ -145,11 +149,14 @@
                     <option>This Year</option>
                 </select>
             </div> -->
-            <div class="mt-2" align="right">
-                <button class="btn btn-warning btn-sm " (click)="filterData()">Apply</button>
+                <div class="mt-2" align="right">
+                    <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid"
+                        (click)="filterData()">Apply</button>
+                    <!-- (click)="filterData()" -->
+                </div>
             </div>
+        </form>
         </div>
-    </div>
 
 
     <div class="col-sm-9 card">
@@ -163,7 +170,7 @@
             <table class="table table-striped ">
                 <thead class="thead">
                     <tr>
-                        <th >in US Dollar per ton</th>
+                        <th>in US Dollar per ton</th>
                         <th class="text-left">LME Cash-Settlement</th>
                         <th class="text-center">LME 3-months</th>
                     </tr>
@@ -182,17 +189,17 @@
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>LME Copper Cash-Settlement</th>
-                    <th>LME Copper 3-month</th>
-                    <th>LME Copper stock</th>
+                    <th>LME {{commodityHead_commodityType}} Cash-Settlement</th>
+                    <th>LME {{commodityHead_commodityType}} 3-month</th>
+                    <th>LME {{commodityHead_commodityType}} stock</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let data of copperData">
-                    <td>{{data.date}}</td>
-                    <td>{{data.CashSettlement}}</td>
-                    <td>{{data.Copper3month}}</td>
-                    <td>{{data.CopperStock}}</td>
+                <tr *ngFor="let item of dateArray?.data">
+                    <td>{{item?.date| date:'YYYY MMMM dd'}}</td>
+                    <td>{{item?.cash_settelment}}</td>
+                    <td>{{item?.three_month}}</td>
+                    <td>{{item?.stock}}</td>
                 </tr>
             </tbody>
         </table>

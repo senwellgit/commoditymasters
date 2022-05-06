@@ -22,4 +22,5 @@ describe('LmeCommodityDailyPriceUpdatesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

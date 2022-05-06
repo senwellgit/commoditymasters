@@ -14,6 +14,7 @@ import { RfqBenchMarkingComponent } from './raw-material-prices-section/rfq-benc
 import { GlobalImportExportDataComponent } from './raw-material-prices-section/global-import-export-data/global-import-export-data.component'; 
 import { ReactiveFormsModule } from '@angular/forms'
 import { FormsModule } from '@angular/forms'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { FormsModule } from '@angular/forms'
     GlobalImportExportDataComponent
   ],
   imports: [
-    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,ReactiveFormsModule,FormsModule
+    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,ReactiveFormsModule,FormsModule,HttpClientModule
  
     
   ]
