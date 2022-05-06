@@ -20,9 +20,10 @@ export class LmeCommodityDailyPriceUpdatesComponent implements OnInit {
   show: boolean = false;
   hide: boolean = true;
   commodityType: any;
-  commodityHead: any;
-dateArray: any;
+  commoditySelectedType !:string;
+  dateArray: any;
   head_id: any;
+  commodityHead: any;
   type_id: any;
   event: Event | undefined;
 
@@ -58,8 +59,8 @@ onSubmits(data: any) {
         .getDay(data.head, data.type, data.start_date, data.end_date)
         .subscribe((res) => {
           this.dateArray = res;
-          this.dateArray.data.commodityType
-          console.log("type-------=======", this.dateArray.data.commodityType);
+          this.commoditySelectedType=this.dateArray.data[0]?.commodity_type.type
+          console.log("type-------=======", this.dateArray);
         }); 
   
   // if(data.type==)
