@@ -30,7 +30,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     GlobalImportExportDataComponent
   ],
   imports: [
-    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,ReactiveFormsModule,FormsModule,HttpClientModule
+    CommonModule,RawMaterialPricesRoutingModule,MatTableModule,ReactiveFormsModule,FormsModule,HttpClientModule,
+    
+
  
     
   ]

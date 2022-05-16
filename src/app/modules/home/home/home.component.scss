@@ -337,14 +337,27 @@
     .content p{
       padding-top: 4%;
     }
-    .content img{
-      width: 100%;
-      height: 100%;
-    }
+    // .image{
+    //   width: 100%;
+    //   height: 100%;
+    // }
   }
   @media only screen and (max-width:1200px){
     .col-lg-4{
       width: 31.333333%;
     }
   }
-   
+   .img1{
+     height:300px;
+     width:200px;
+    //  filter: grayscale(0.5) blur(10px);
+     border-left:30px solid rgba(7, 7, 7, 0.1) ; 
+     border-right:30px solid rgba(12, 12, 12, 0.1);
+     filter: drop-shadow(8px 8px 10px rgb(19, 18, 18));
+    //  rgba(73, 65, 65, 0.288);
+    //  filter: blur(3px);
+    //  border-left-blur:(2px);
+//     background: rgba(255,255,255,0.5);
+// shape-image-threshold: blur(300x);
+// backdrop-filter: blur(5px);
+   }

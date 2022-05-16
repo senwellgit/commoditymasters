@@ -1,4 +1,4 @@
-<!-- top carousel -->
+<!-- top carousel
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
     id="myCarousel">
     <div class="carousel-inner">
@@ -12,10 +12,26 @@
             <img src="../../../../assets/carousel_3.png" class="d-block w-100" alt="...">
         </div>
     </div>
-</div>
+</div> -->
+  
+<owl-carousel-o [options]="customOptions">
+  
+<ng-container *ngFor="let slide of slides">
+  <ng-template carouselSlide [slides.id]="slide.id">
+    <img class="img1" [src]="slide.img" >
+    
+  </ng-template>
+</ng-container>
+
+<!-- <ng-container *ngFor="let slide of apiData">
+    <ng-template class="slide" carouselSlide [id]="slide.id">
+      <img [src]="slide.url" [alt]="slide.id" [title]="slide.id">
+    </ng-template>
+  </ng-container> -->
+  
+</owl-carousel-o>
 
 <!-- top carousel -->
-
 <!-- welcome section -->
 
 <div class="container" style="padding-top: 1%;">
@@ -44,7 +60,7 @@
                 </h1>
             </div>
 
-            <img src="../../../../assets/paraPic.png" width="230px" height="150px">
+            <img class="image" src="../../../../assets/paraPic.png" width="230px" height="150px">
             <p>We provide our clients with reliable data, forecasts, analysis of key commodities, raw material price
                 tracking, spend analysis, sourcing services and designing best-in-class procurement processes that
                 revolves around profitability for you to help make sound business decisions. Our reports feature the

@@ -8,7 +8,7 @@ import { RawMaterialPricesRoutingModule } from './raw-material-prices-routing.mo
   declarations: [],
   imports: [
     CommonModule,
-    RawMaterialPricesRoutingModule
+    RawMaterialPricesRoutingModule,
   ]
 })
 export class RawMaterialPricesModule { }
