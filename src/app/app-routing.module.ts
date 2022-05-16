@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ForgetPasswordComponent } from './modules/login/forget-password/forget-password.component';
 import { PurchaseInterlligenceComponent } from './modules/services/purchase-interlligence/purchase-interlligence.component';
 import { PurchasePriceVarianceComponent } from './modules/services/purchase-price-variance/purchase-price-variance.component';
 import { SourcingServicesComponent } from './modules/services/sourcing-services/sourcing-services.component';
@@ -45,7 +44,6 @@ const routes: Routes = [{
   loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
 },
 
-{ path: 'forget-password', component: ForgetPasswordComponent },
 { path: 'purchase-intelligence', component: PurchaseInterlligenceComponent },
 { path: 'sourcing-services', component: SourcingServicesComponent },
 { path: 'purchase-price-variance', component: PurchasePriceVarianceComponent },

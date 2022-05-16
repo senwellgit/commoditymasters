@@ -1,23 +1,28 @@
 <form [formGroup]="formdata" (submit)="onSubmits(formdata.value)">
-  <div class="row" style="margin-top: 10px;">
+  <div class="row" style="margin-top: 30px;">
     <div class="col-md-4">
       <div class="commodityList">
         <label for="">Copper International Market LME</label>
         <div class="mt-1">
           <select name="" id="" class="form-select " formControlName="head" (change)="selectHead($event)" required>
-            <option value="" selected>Select</option>
+            <!-- <option value="" selected placeholder="select">Select</option> -->
+            <option value="" disabled selected hidden>SELECT</option>
+
             <ng-container *ngFor="let head of commodityHead">
               <option *ngIf="head?.head != ''" value="{{head.id}}">{{head?.head}}</option>
             </ng-container>
-         
+
           </select>
         </div>
-        <label for="">Commodity</label>
-        <div class="mt-1 ">
-          <select name="" id="" class="form-select" formControlName="type" required>
-            <option value="" selected>Select</option>
-            <option value="{{type.id}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}</option>
-          </select>
+        <div *ngIf="commodityType != undefined">
+          <label for="">Commodity</label>
+          <div class="mt-1 ">
+            <select name="" id="" class="form-select" formControlName="type" required>
+              <!-- <option value="" selected>Select</option> -->
+              <option value="" disabled selected hidden>SELECT</option>
+              <option value="{{type.id}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}</option>
+            </select>
+          </div>
         </div>
         <label for="">Price Unit</label>
         <div class="mt-1 ">
@@ -67,14 +72,53 @@
           </div>
         </div>
         <div class="mt-2" align="right">
-          <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid">Submit</button>
+          <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid" (click)="onSubmit()">Submit</button>
         </div>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">
-          <h2>Copper International Market LME </h2>
+      <div *ngIf="fromHide">
+        <div class="card">
+          <div class="card-header">
+            <h2>{{commodity_type}} International Market LME</h2>
+          </div>
+          <table class="table c-table" *ngIf="tableData$ | async as tableList">
+            <thead>
+              <tr class="table-head">
+                <th scope="col" style="width: 5%">Month</th>
+                <th scope="col" style="width: 10%;" *ngFor="let item of yearsData">{{item}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of months;let monthIndex=index">
+                <td>{{ months[monthIndex] }}</td>
+                <ng-container *ngFor="let year of yearsData;let yearIndex=index">
+                  <td [ngSwitch]="tableList[yearIndex][monthIndex]?.currency?.currency.toLowerCase()">
+                    <span *ngSwitchCase="'yuan'">
+                      ¥{{ tableList[yearIndex][monthIndex]?.value }}
+                    </span>
+                    <span *ngSwitchCase="'usd'">
+                      ${{ tableList[yearIndex][monthIndex]?.value}}
+                    </span>
+                    <span *ngSwitchCase="'euro'">
+                      €{{ tableList[yearIndex][monthIndex]?.value}}
+                    </span>
+                    <span *ngSwitchDefault class="badge">
+                      ${{ tableList[yearIndex][monthIndex]?.value}}
+                    </span>
+                </ng-container>
+              </tr>
+
+              <tr>
+                <td>Average</td>
+                <td *ngFor="let item of avg">{{item.avgPer | number:'.1-2'}}</td>
+              </tr>
+              <tr>
+                <td>%</td>
+                <td *ngFor="let item of avg">{{item.percentage | number:'.1-2'}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <table class="table c-table" *ngIf="tableData$ | async as tableList">
           <thead>
@@ -131,26 +175,29 @@
   </div>
 </form>
 <hr class="my-5">
-<div class="row">
+<div class="row" *ngIf="fromHide">
   <div class="col-md-12">
     <div class="card ">
-      <div class="card-header ">
+      <!-- <div class="card-header ">
         <div class="row">
           <div class="col-md-8">
-            <h3 class="text-right">Select the chart type</h3>
           </div>
           <div class="col-md-4">
-            <select (change)="onChange($event)" class="form-select">
+            <select (change)="onChange($event)" style="width: 84px; margin-left: 70px;" class="form-select">
               <option *ngFor="let chart of chartType">{{chart}}</option>
             </select>
           </div>
         </div>
 
-      </div>
-      <div class="card-body chart-body">
-        <canvas id="canvas"></canvas>
-        <!-- <canvas id="canvas" width="580" height="480"></canvas> -->
+      </div> -->
+      <div class="card-body chart-body row">
+        <div class="col-1">
+          <h2 class="vertical-text">{{currency}}</h2>
+        </div>
+        <div class="col-11">
+          <h2 class="text-right">LME {{commodity_type}}</h2>
+          <canvas id="canvas"></canvas>
+        </div>
       </div>
     </div>
   </div>
-</div>

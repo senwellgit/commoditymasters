@@ -276,6 +276,23 @@
 
   // welcomne Section
 
+
+  .cards-group .card{
+    background-color: unset;
+    color: #333!important;
+    width: 32%;
+    margin: 0px 8px 8px 0;
+    height: auto;
+    vertical-align: top;
+    // display: inline-block;
+    // width: 100%;
+   }
+
+  .cards-group .card:hover{
+    background-color: unset;
+    color: #333; 
+}
+
 // Media queries
   @media only screen and (max-width: 1000px) {
     .row{
@@ -361,3 +378,21 @@
 // shape-image-threshold: blur(300x);
 // backdrop-filter: blur(5px);
    }
+
+  @media (min-width:320px) and (max-width:420px){
+    .card-columns {
+     
+      margin-bottom: 30px;
+      column-count: 1;
+  }
+
+  }
+  .card-columns {
+    
+      column-count: 3;
+      margin-bottom: 30px;
+    
+      //  
+    
+  }
+   

@@ -41,7 +41,7 @@
                 <div class="title1">
                     <i class="fas fa-book-open"></i> Commodities Price Traking - We Serve you
                 </div>
-<hr style="color: rgb(0, 0, 0);">
+                <hr style="color: rgb(0, 0, 0);">
                 <ul>
                     <li><i class="fas fa-angle-right"></i> LME commodity daily Price Updates.</li>
                     <li><i class="fas fa-angle-right"></i> Monthly CIR Report</li>
@@ -83,122 +83,92 @@
 <div class="container" id="tracker">
     <div class="row">
         <h2 style="font-weight: bold; color: #131357;">We Are Tracking Global Commodities</h2><br><br><br><br>
-        <div class="col-sm-3">
-            <h3>Non Ferrous Metals</h3>
-            <ul>
-                <li>Copper</li>
-                <li>Aluminium</li>
-                <li>Zinc</li>
-                <li>Brass</li>
-                <li>Nickel</li>
-                <li>Lead</li>
-                <li>Tin</li>
-                <li>Manganese</li>
-                <li>Steel</li>
-                <ul>
-                    <li>HRC</li>
-                    <li>CRC</li>
-                    <li>Wire Rod</li>
-                    <li>Rebar</li>
-                </ul>
-            </ul>
+        <!-- <div class="cards-group">
+                <div class="cards-columns">
+                <ng-container *ngFor="let item of alldata">
+                    <div *ngIf="item?.commodity_type.length > 1" class="card mb-2 d-inline-block">
+                        <div class="card-header text-white" style="background: #025b92;">
+                            <h3 class="m-0 p-0">{{item?.head}} <span *ngIf="item?.head == 'Chemical'">China</span></h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li *ngFor="let item2 of item.commodity_type">
+                                    {{item2?.type}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div> -->
+        <div class="card-columns">
+            <div class="card-body">
+                <ng-container *ngFor="let item of alldata">
+                    <div *ngIf="item?.commodity_type.length > 1">
+                        <h3>{{item?.head}} <span *ngIf="item?.head == 'Chemical'">China</span></h3>
+                        <ul type="square">
+                            <li *ngFor="let item2 of item.commodity_type">
+                                {{item2?.type}}
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <h3>Ferrous Metals</h3>
-            <ul>
-                <li>MS flat</li>
-                <li>MS Angel</li>
-                <li>MS Channel</li>
-                <li>Pig Iron</li>
-                <li>Ingot Round</li>
-                <li>Ingot MG</li>
-                <li>Casting Scrap</li>
-                <li>Turning Scrap</li>
-            </ul>
-            <h3>Chemicals</h3>
-            <ul>
-                <li>Crude Oil</li>
-                <ul>
-                    <li>WTI</li>
-                    <li>Brent</li>
-                </ul>
-                <li>Castor Oil</li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <h3>Chemicals</h3>
-            <ul>
-                <li>Nylon 6</li>
-                <li>Nylon 66</li>
-                <li>ABS</li>
-                <li>PE</li>
-                <li>PP(Homopolymer)</li>
-                <li>PP(Copolymer)</li>
-                <li>PC</li>
-                <li>PBT</li>
-                <li>PVC</li>
-                <li>Caprolactam</li>
-            </ul>
-            <h3>Currency</h3>
-            <ul>
-                <li>EURO</li>
-                <li>USD</li>
-                <li>INR</li>
-                <li>GBP</li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <h3 id="wrapperhead" style="border-radius: 25px;">Our Estemmed Clients.
-            </h3>
-            <div class='wrapper'>
-                <div class='carousel'>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/Aerospace logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Aerospace Industries</p>
-                        </div>
+       
+        <hr>
+    </div>
+    <div class="col-4 row-2 text-center">
+        <h3 id="wrapperhead" style="border-radius: 50px;">Our Estemmed Clients.
+        </h3>
+        <div class='wrapper'>
+            <div class='carousel'>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/Aerospace logo.png" alt="" height="100%" width="100%">
                     </div>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/Electrical_logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Electrical Industries</p>
-                        </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Aerospace Industries</p>
                     </div>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/Automotive_logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Automotive Industries</p>
-                        </div>
+                </div>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/Electrical_logo.png" alt="" height="100%" width="100%">
                     </div>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/O&G_logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Oil & Gas Industries</p>
-                        </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Electrical Industries</p>
                     </div>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/Energy_logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Energy</p>
-                        </div>
+                </div>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/Automotive_logo.png" alt="" height="100%" width="100%">
                     </div>
-                    <div class='carousel__item'>
-                        <div class='carousel__item-head'>
-                            <img src="../../../../assets/Contruction_logo.png" alt="" height="100%" width="100%">
-                        </div>
-                        <div class='carousel__item-body'>
-                            <p class='title'>Construction</p>
-                        </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Automotive Industries</p>
+                    </div>
+                </div>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/O&G_logo.png" alt="" height="100%" width="100%">
+                    </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Oil & Gas Industries</p>
+                    </div>
+                </div>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/Energy_logo.png" alt="" height="100%" width="100%">
+                    </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Energy</p>
+                    </div>
+                </div>
+                <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                        <img src="../../../../assets/Contruction_logo.png" alt="" height="100%" width="100%">
+                    </div>
+                    <div class='carousel__item-body'>
+                        <p class='title'>Construction</p>
                     </div>
                 </div>
             </div>

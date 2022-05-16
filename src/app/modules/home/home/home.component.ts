@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-// import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Component, OnInit } from "@angular/core";
+import { OwlOptions } from "ngx-owl-carousel-o";
+import { filter } from "rxjs/operators";
+import { MasterserviceService } from "src/app/masterservice.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
   // title = 'ng-carousel-demo';
@@ -41,12 +42,36 @@ export class HomeComponent implements OnInit {
     {id: 3, img: "../../../../assets/carousel_3.png"},
     {id: 4, img: "../../../../assets/carousel_2.png"}
   ]
+  getdata: any;   
+  commodityHead: any;
+  alldata: any;
 
   
-  constructor() { }
+  constructor(private masterService:MasterserviceService) { }
 
   ngOnInit(): void {
     
   }
 
+  gettype() {
+    this.masterService.gettypebyheadid(1).subscribe((res) => {
+      this.getdata = res;
+      console.log("hello", res);
+    });
+  }
+  getHeadData() {
+    this.masterService.getHead().subscribe((res) => {
+      this.commodityHead = res;
+      console.log("headdata", res);
+    });
+  }
+  getAll() {
+    this.masterService.getty().subscribe((res) => {
+     
+      this.alldata = res;
+      
+      console.log("allldata", res);
+
+    });
+  }
 }

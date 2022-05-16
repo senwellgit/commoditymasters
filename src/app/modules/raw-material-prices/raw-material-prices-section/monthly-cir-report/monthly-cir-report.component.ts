@@ -1,10 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { registerables, Chart, ChartConfiguration } from "chart.js";
 import { MasterserviceService } from "src/app/masterservice.service";
 import { map } from "rxjs/operators";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AbsoluteSourceSpan } from "@angular/compiler";
-import { $$ } from "protractor";
 
 Chart.register(...registerables);
 
@@ -13,47 +11,48 @@ Chart.register(...registerables);
   templateUrl: "./monthly-cir-report.component.html",
   styleUrls: ["./monthly-cir-report.component.scss"],
 })
-export class MonthlyCirReportComponent implements OnInit {
+export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
+  
   show: boolean = false;
   hide: boolean = true;
   commodityType: any;
   commodityHead: any;
   fromHide: boolean = false;
-  chartType = ["line", "bar", "pie", "doughnut", "polarArea", "radar"];
+  chartType = "line";
   data1: any = [];
-  data2 = [40, 30, 25, 15, 52];
+  // data2 = [40, 30, 25, 15, 52];
   yearsData: any = [];
   chartData1: any = [];
-  chartData2: any = [];
-  chartData3: any = [];
-  chartData4: any = [];
   monthData: any = [];
-  chart!: Chart;
+ public chart!: Chart;
   column: Array<number> = [];
   type: any = "line";
   type2: any;
-  colorsCode: Array<string> = [
-    "#067c19",
-    "#eb1515",
-    "#28e8e9",
-    "#3e35ee",
-    "#ec35ee",
-  ];
+  
+  colorsCode:Array<string> = ['#067c19','#eb1515','#00ffff','#ec35ee','#990000','#00cc00'];
+
   headId: any;
   typeId: any;
   commodity_type: any;
   method: any;
-  commodityHead_commodityType: any;
+  commodityHead_commodityType: any =[];
+  currency : string = '';
+  avg : any = [] 
+  percent : any = []
 
   _tableData$ = this.masterService.getData(2, 13).pipe(
     map((res: any) => {
       let table: any[] = [];
       this.column = res.column;
+      console.log(res);
+      
+      this.commodity_type = res.materialData[0].commodity_type.type;
+      this.avg = res.materialData[3].average.avgPer;
 
       // all sorted years
       this.yearsData = this.column.sort();
 
-      let years = [];
+
 
       for (let index = 0; index < this.yearsData.length; index++) {
         const element = this.yearsData[index];
@@ -68,7 +67,8 @@ export class MonthlyCirReportComponent implements OnInit {
         let sorted: Array<any> = yearData.sort(
           (a: any, b: any) => a.month.id - b.month.id
         );
-        console.log("Year Data", sorted);
+        this.currency =sorted[0].UOM;
+        
 
         let i = 0;
         let array = [];
@@ -94,35 +94,29 @@ export class MonthlyCirReportComponent implements OnInit {
 
         table.push(array);
       }
-
-      /* this is for table data based on month_id*/
-
-      // for (let i = 0; i < this.months.length; i++) {
-      //     let monthData = res.materialData.filter((ele:any)=>{
-      //       if(ele.month.month == this.months[i]){
-      //         return true;
-      //       }else{
-      //         return false;
-      //       }
-      //     });
-      //     table.push(monthData);
-      //
-      // }
+       
+      
       for (let index = 0; index < this.column.length; index++) {
         let chartData: any = [];
         res.materialData.forEach((ele: any) => {
           if (ele.year.year == this.column[index]) {
-            chartData.push(ele.value);
+            chartData.push(ele.value); 
+            
+                       
           }
         });
+
         this.chartData1.push({
           year: this.column[index],
           data: chartData,
           colorCode: this.colorsCode[index],
         });
+        
       }
       this.showChart();
       return table;
+      
+      
     })
   );
 
@@ -140,6 +134,7 @@ export class MonthlyCirReportComponent implements OnInit {
     "NOV",
     "DEC",
   ];
+  entire_Data: any =[];
 
   public get tableData$() {
     return this._tableData$;
@@ -149,33 +144,63 @@ export class MonthlyCirReportComponent implements OnInit {
   }
 
   constructor(private masterService: MasterserviceService) {}
+  ngAfterViewInit(): void {
+    
+  }
 
   ngOnInit() {
     // this.showChart()
     this.getHeadData();
+    this.getentireData()
+  }
+
+  onSubmit() {
+    this.fromHide = true;
   }
 
   showChart() {
-    if (this.chart) {
+    if (this.chart)  {
       this.chart.destroy();
     }
-
+    
     let dataset = this.chartData1.map((res: any) => {
+      this.chartData1 = [res.data];
       return {
         label: res.year,
         borderColor: res.colorCode,
-        backgroundColor: ["#ed05f4", "#d92b0d", "#1cd90d"],
+        backgroundColor:res.colorCode,
         data: res.data,
-        // legend:{position:'bottom'},
+        fill: false,
+        tension :0.1
       };
     });
 
     this.chart = new Chart("canvas", {
       options: {
+        maintainAspectRatio:false,
+        pointRadius: 2,
+        pointHoverRadius: 7,
+         title: {
+           display: true,
+           text: "chart"
+       },
         plugins: {
           legend: {
             display: true,
             position: "bottom",
+          },
+        },
+        scales: {
+          
+          x: {
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            grid: {
+              display: false,
+            },
           },
         },
       },
@@ -198,10 +223,10 @@ export class MonthlyCirReportComponent implements OnInit {
         datasets: dataset,
       },
     });
+    
   }
 
   onChange(selected_chart: any) {
-    // this.type = selected_chart?.masterService?.value;
     this.type = selected_chart.target.value;
     this.showChart();
   }
@@ -213,16 +238,16 @@ export class MonthlyCirReportComponent implements OnInit {
 
   onSubmits(data: any) {
     this.commodityHead_commodityType = data;
-    console.log("hello", data);
-    this.tableData$ = this.masterService.getData(+data.head, +data.type).pipe(
+    this._tableData$ = this.masterService.getData(+data.head, +data.type).pipe(
       map((res: any) => {
+      console.log(res);
+
         let table: any[] = [];
         this.column = res.column;
-
+        this.commodity_type = res.materialData[0].commodity_type.type;
+        
         // all sorted years
         this.yearsData = this.column.sort();
-
-        let years = [];
 
         for (let index = 0; index < this.yearsData.length; index++) {
           const element = this.yearsData[index];
@@ -237,7 +262,6 @@ export class MonthlyCirReportComponent implements OnInit {
           let sorted: Array<any> = yearData.sort(
             (a: any, b: any) => a.month.id - b.month.id
           );
-          console.log("Year Data", sorted);
 
           let i = 0;
           let array = [];
@@ -263,56 +287,62 @@ export class MonthlyCirReportComponent implements OnInit {
               array.push(null);
             }
           }
-
-          table.push(array);
           
+          table.push(array);
+          this.currency =sorted[0].UOM;
         }
 
-        /* this is for table data based on month_id*/
-
-        // for (let i = 0; i < this.months.length; i++) {
-        //     let monthData = res.materialData.filter((ele:any)=>{
-        //       if(ele.month.month == this.months[i]){
-        //         return true;
-        //       }else{
-        //         return false;
-        //       }
-        //     });
-        //     table.push(monthData);
-        //
-        // }
-        for (let index = 0; index < this.column.length; index++) {
-          let chartData: any = [];
-          res.materialData.forEach((ele: any) => {
-            if (ele.year.year == this.column[index]) {
+        for (let index=0;index<this.column.length;index++) {
+          let chartData:any = [];
+          res.materialData.forEach((ele:any)=>{
+            if(ele.year.year == this.column[index]){
               chartData.push(ele.value);
             }
           });
-          this.chartData1.push({
-            year: this.column[index],
-            data: chartData,
-            colorCode: this.colorsCode[index],
+          this.chartData1.push({year:this.column[index],
+            data:chartData,
+            colorCode:this.colorsCode[index],
           });
         }
         this.showChart();
         return table;
       })
     );
+    this.getdata()
   }
 
   getHeadData() {
     this.masterService.getHead().subscribe((res) => {
       this.commodityHead = res;
-      console.log("***************", res);
     });
   }
 
   selectHead(event: any) {
-    console.log("event.target.value", event.target.value);
     const data = event.target.value;
     this.masterService.gettypebyheadid(data).subscribe((res) => {
       this.commodityType = res;
-      console.log("types>>>>>>>>>>>>>>", res);
     });
+  }
+  selectTypes(event:any){
+    this.commodity_type = event.target.value;
+  }
+
+  getdata() {
+    this.masterService.getData(this.commodityHead_commodityType.head, this.commodityHead_commodityType.type).subscribe((res)=>{
+      this.entire_Data = res;
+     
+      this.avg = this.entire_Data.average.sort((a:any,b:any)=>{
+        
+        return a-b
+      })
+      
+      
+    })
+  }
+// For All Data Of comoditty
+  getentireData() {
+    this.masterService.getallData().subscribe((res)=>{
+      this.entire_Data = res
+    })
   }
 }
