@@ -19,13 +19,15 @@ export class LmeCommodityDailyPriceUpdatesComponent implements OnInit {
   exceldata: any = [];
   show: boolean = false;
   hide: boolean = true;
-  commodityType: any;
+  commodityType: any=[];
   commoditySelectedType !:string;
   dateArray: any;
   head_id: any;
-  commodityHead: any;
+  commodityHead:any=[];
   type_id: any;
   event: Event | undefined;
+  // alldata: any=[];
+
 
   constructor(
     private masterService: MasterserviceService,
@@ -35,6 +37,7 @@ export class LmeCommodityDailyPriceUpdatesComponent implements OnInit {
   ngOnInit(): void {
     this.getholedata();
     this.getHeadData();
+    this.getdaily()
     // let a=this.type_id;
   }
 getholedata() {
@@ -59,6 +62,8 @@ onSubmits(data: any) {
         .getDay(data.head, data.type, data.start_date, data.end_date)
         .subscribe((res) => {
           this.dateArray = res;
+          // console.log("response onSubmit()=========>",   res);
+          
           this.commoditySelectedType=this.dateArray.data[0]?.commodity_type.type
           console.log("type-------=======", this.dateArray);
         }); 
@@ -141,33 +146,17 @@ lmeData=[
 
 ]
 
-// show:boolean=false;
-// hide:boolean=true;
-  // commodityType: any=[];
-  ex: any=[];
-  // commodityHead: any=[];
-  alldata: any=[];
-  data: any=[];
-
-
-
-  // constructor(private masterService:MasterserviceService) { }
-
-  // ngOnInit(): void {
-  //   this.getHeadData();
-  //   this.getdaly()
-  // }
 
 filterData(){
   this.show=true;
   this.hide=false;
 }
-// getHeadData() {
-//   this.masterService.getHead().subscribe((res) => {
-//     this.commodityHead = res;
-//     console.log("***************", res);
-//   });
-// }
+
+filterable(){
+  this.show=true;
+  this.hide=true;
+}
+
 
 selectHead(event: any) {
   console.log("event.target.value", event.target.value);
@@ -177,18 +166,13 @@ selectHead(event: any) {
     console.log("types>>>>>>>>>>>>>>", res);
   });
 }
-getdaly()
+getdaily()
 {
   this.masterService.getmonth().subscribe((res:any)=>{
     this.data=res.data
     console.log("all date",res);
-    
   })
-  
 }
-
-  
-
  formdata = new FormGroup({
     head: new FormControl("", [Validators.required]),
     type: new FormControl("", [Validators.required]),
@@ -196,17 +180,14 @@ getdaly()
     end_date: new FormControl("", [Validators.required]),
   });
 
-// selectHead(event: any) {
-//     console.log("event.target.value", event.target.value);
-//     const data = event.target.value;
-//     this.masterService.gettypebyheadid(data).subscribe((res) => {
-//       this.commodityType = res;
-//       console.log("types>>>>>>>>>>>>>>", res);
-//     });
-//   }
-}
+  getentireData() {
+    this.masterService.getallData().subscribe((res)=>{
+      this.entire_Data = res
+    })
+  }
+
  // onSubmit(data: any) {
-  //   debugger
+  
   //   console.log("data data ==============>",data);
     
   //   this.masterService
@@ -216,4 +197,4 @@ getdaly()
   //       console.log("data-------=======", res);
   //       console.log();
   //     });
-  // }
+  }

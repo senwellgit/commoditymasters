@@ -97,14 +97,13 @@
         </tbody>
     </table>
 </div> -->
-
 <div class="row" style="margin-top: 10px;">
     <div class="col-sm-3">
     <form [formGroup]="formdata" (submit)="onSubmits(formdata.value)">
             <div class="commodityList">
                 <label for="">Commodity Head </label>
-                <div class="mt-1 form-group">
-                    <select name="" id="" class="form-select " formControlName="head" (change)="selectHead($event)"
+                <div class="mt-1 form-group ">
+                    <select name="" id="" class="form-control form-select" formControlName="head" (change)="selectHead($event)"
                         required>
                         <option value="" selected>Select</option>
                         <ng-container *ngFor="let head of commodityHead">
@@ -114,14 +113,14 @@
                     </select>
                 </div>
                 <label for="">Commodity</label>
-                <div class="mt-1 form-group">
+                <div class=" mt-1 form-group">
                     <!--
                     <option value="">Non-Ferrous Metals</option>
                     <option value="">Ferrous Metals</option>
                     <option value="">Plastics</option>
                     <option value="">Ferrous Alloys</option>
                     <option value="">Rubber</option> -->
-                    <select name="" id="" class="form-select" formControlName="type" required>
+                    <select name="" id=""   class=" form-control form-select" formControlName="type" required>
                         <option value="" selected>Select</option>
                         <option value="{{type.id}}" *ngFor="let type of commodityType ; let i=index">{{type?.type}}
                         </option>
@@ -152,16 +151,29 @@
                 <div class="mt-2" align="right">
                     <button class="btn btn-warning btn-sm " [disabled]="!formdata.valid"
                         (click)="filterData()">Apply</button>
-                    <!-- (click)="filterData()" -->
+                  
                 </div>
             </div>
         </form>
         </div>
 
-
     <div class="col-sm-9 card">
         <div *ngIf="hide">
             <div class="">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     currency
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!-- <div class="mt-2">
+                            <button class="btn"
+                                (click)="filterable()">Yulan</button>
+                        </div> -->
+                      <a class="dropdown-item" href="">Yuvan</a>
+                      <a class="dropdown-item" href="">Usd</a>
+                      <a class="dropdown-item" href="">Euro</a>
+                    </div>
+                </div>
                 <h1 class="tableHead">Official LME-Prices </h1>
             </div>
             <div>
@@ -183,11 +195,12 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-
+    </div>
+        
+<!-- 
         <div *ngIf="show && dateArray?.length ==0">
             <h1>Data not available</h1>
-        </div>
+        </div> -->
 
         <table *ngIf="show && dateArray?.length !=0" class="table  text-center">
             <thead>

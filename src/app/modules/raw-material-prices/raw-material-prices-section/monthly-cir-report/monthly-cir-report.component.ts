@@ -12,6 +12,7 @@ Chart.register(...registerables);
   styleUrls: ["./monthly-cir-report.component.scss"],
 })
 export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
+  [x: string]: any;
   
   show: boolean = false;
   hide: boolean = true;
@@ -21,6 +22,7 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
   chartType = "line";
   data1: any = [];
   // data2 = [40, 30, 25, 15, 52];
+  commodityHead_commodityType: any =[];
   yearsData: any = [];
   chartData1: any = [];
   monthData: any = [];
@@ -28,18 +30,16 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
   column: Array<number> = [];
   type: any = "line";
   type2: any;
+  avg : any = [] 
+  percent : any = []
+  headId: any;
+  typeId: any;
+  currency : string = '';
   
   colorsCode:Array<string> = ['#067c19','#eb1515','#00ffff','#ec35ee','#990000','#00cc00'];
 
-  headId: any;
-  typeId: any;
-  commodity_type: any;
   method: any;
-  commodityHead_commodityType: any =[];
-  currency : string = '';
-  avg : any = [] 
-  percent : any = []
-
+  
   _tableData$ = this.masterService.getData(2, 13).pipe(
     map((res: any) => {
       let table: any[] = [];
@@ -94,18 +94,15 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
 
         table.push(array);
       }
-       
       
       for (let index = 0; index < this.column.length; index++) {
         let chartData: any = [];
         res.materialData.forEach((ele: any) => {
           if (ele.year.year == this.column[index]) {
             chartData.push(ele.value); 
-            
                        
           }
         });
-
         this.chartData1.push({
           year: this.column[index],
           data: chartData,
@@ -115,8 +112,6 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
       }
       this.showChart();
       return table;
-      
-      
     })
   );
 
@@ -149,7 +144,7 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    // this.showChart()
+    this.showChart()
     this.getHeadData();
     this.getentireData()
   }
@@ -240,6 +235,7 @@ export class MonthlyCirReportComponent implements OnInit, AfterViewInit {
     this.commodityHead_commodityType = data;
     this._tableData$ = this.masterService.getData(+data.head, +data.type).pipe(
       map((res: any) => {
+        // this.data=res;
       console.log(res);
 
         let table: any[] = [];
